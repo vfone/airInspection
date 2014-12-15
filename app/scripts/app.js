@@ -78,8 +78,8 @@ function writeLookUpToLocal(url){
 
     $.getJSON(url, function(data) {
         //split lookup to smaller section
-        console.log(url);
-        console.log(data);
+        //console.log(url);
+        //console.log(data);
         setLocalStorage('Surveyors', JSON.stringify(data.Surveyors));
         setLocalStorage('AircraftTypes', JSON.stringify(data.AircraftTypes));
         setLocalStorage('Aircrafts', JSON.stringify(data.Aircrafts));
