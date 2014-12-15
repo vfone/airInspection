@@ -1,0 +1,67 @@
+<!doctype html>
+<html class="no-js" manifest="/cache.manifest1111>
+  <head>
+      <!--meta set-->
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+      <meta name="generator" content="Vito"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="HandheldFriendly" content="true"/>
+      <meta name="MobileOptimized" content="768"/>
+      <link rel="shortcut icon" href="images/favicon.png" />
+      <link rel="apple-touch-icon" href="images/logo72x72.png" />
+      <link rel="apple-touch-icon" sizes="72x72" href="images/logo72x72.png" />
+      <link rel="apple-touch-icon" sizes="114x114" href="images/logo114x114.png" />
+      <link rel="apple-touch-startup-image" href="./images/startup.png" />
+      <link rel="apple-touch-startup-image" href="./images/startup@2x.png" media="only screen and (-webkit-min-device-pixel-ratio: 1.5)"/>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.css" />
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/bootstrap-select.css">
+    <title>AirCheck</title>
+    <!-- endbuild -->
+  </head>
+  <body ng-app="airInspectionApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div ng-view=""></div>
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="../bower_components/es5-shim/es5-shim.js"></script>
+    <script src="../bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+    <script src="bower_components/nya-bootstrap-select/src/nya-bootstrap-select.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/bootstrap-select.js"></script>
+
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/working.js"></script>
+        <script src="scripts/controllers/summary.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

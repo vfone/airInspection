@@ -1,0 +1,1010 @@
+@font-face {
+    font-family: 'bangla_mnregular';
+    src: url('../fonts/banglamn-webfont.eot');
+    src: url('../fonts/banglamn-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/banglamn-webfont.woff') format('woff'),
+    url('../fonts/banglamn-webfont.ttf') format('truetype'),
+    url('../fonts/banglamn-webfont.svg#bangla_mnregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'bellgothicstd-bold';
+    src: url('../fonts/bellgothicstd-bold.eot');
+    src: url('../fonts/bellgothicstd-bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/bellgothicstd-bold.woff') format('woff'),
+    url('../fonts/bellgothicstd-bold.ttf') format('truetype'),
+    url('../fonts/bellgothicstd-bold.svg#bellgothicstd-bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* Space out content a bit */
+html, body {
+  padding:0px;
+  margin: 0px;
+    height: 100%;
+    font-family: arial, sans-serif !important;
+}
+.ng-scope{
+    height: 100%;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.modal-body span.highlight{
+    font-weight: bold;
+    font-style: italic;
+    color: #da365c;
+}
+
+#extModal .modal-dialog{
+    width:90%;
+    height: 90%;
+}
+#extModal .modal-body{
+    height:100%;
+}
+#extModal iframe{
+    height: 80%;
+    width: 100%;
+    border: 0px;
+    outline: 0px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+
+  /*login page*/
+  #login{
+      background: url("../images/bg/welcomebg.jpg") no-repeat 0 0;
+      background-size: 100% 100%;
+      width: 100%;
+      height: 100%;
+      position: relative;
+  }
+  #login  .login_form{
+      padding: 10% 0 0 10%;
+  }
+  #login h1{
+      color:#ffffff;
+      font-size: 54px;
+      font-family: "bangla_mnregular";
+  }
+  #login h1 i{
+      font-size: 100px;
+  }
+  #login .login_form .login_box{
+      background: rgba(255,255,255,0.6);
+      padding:30px 10px 30px 30px;
+      display: inline-block;
+      overflow: hidden;
+  }
+  #login .login_form .login_box .input{
+      background: #ffffff;
+      padding: 5px;
+      float: left;
+      margin-right: 20px;
+      font-size: 30px;
+      width: 260px;
+      position:relative;
+  }
+    #login .login_form .login_box .input input{
+        border: none;
+        width: 190px;
+        color: #1f1f1f;
+        font-family: "bangla_mnregular";
+    }
+    #login .login_form .login_box .input .optionDropdown{
+        overflow-y:scroll;
+        max-height: 200px;
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        display: none;
+        position: absolute;
+        width: 260px;
+        top: 65px;
+        left: 0px;
+    }
+    #login .login_form .login_box .input .optionDropdown li{
+        list-style: none;
+        font-size: 20px;
+        line-height: 35px;
+        background: #f5f5f5;
+        padding: 0px 5px;
+        cursor: pointer;
+    }
+    #login .login_form .login_box .input .optionDropdown li:nth-child(odd){
+        background: #f1f1f1;
+    }
+    #login .login_form .login_box .input i{
+        color:#dbe1ed;
+        font-size: 50px;
+    }
+
+    #login .login_form .login_box .button {
+        width: 260px;
+        margin:100px auto 0 auto;
+        padding: 5px 0px;
+        background: #5ac65f;
+        border: 1px solid #229528;
+        text-align: center;
+        cursor: pointer;
+        display: block;
+    }
+    #login .login_form .login_box .button i {
+        color:#ffffff;
+        font-size: 50px;
+    }
+
+    #login .report_dock{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        background: rgba(255,255,255,0.6);
+        border-top:1px solid #ffffff;
+        overflow-y: scroll;
+        padding: 10px 40px;
+    }
+    #login .report_dock h2{
+        font-size: 25px;
+        color: #00669e;
+        text-shadow: 1px 1px #ffffff;
+        margin: 60px 0px 0px 30px;
+        font-family: "bangla_mnregular";
+    }
+    #login .report_dock .pending{
+        float: left;
+        margin-right: 10px;
+        display: inline-block;
+        color: #ffffff;
+        position: relative;
+        width: 200px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    #login .report_dock .pending i{
+        font-size: 70px;
+    }
+    #login .report_dock .pending span{
+        display: inline-block;
+        position: absolute;
+        height: 40px;
+        font-size: 15px ;
+        margin-left: 5px;
+    }
+    #login .report_dock .pending span.regno{
+        top:7px;
+    }
+    #login .report_dock .pending span.surveyor{
+        top:40px;
+    }
+    #login .report_dock .pending span i{
+        font-size: 30px;
+    }
+
+    #working, #summary{
+      background: #efefef;
+      width:100%;
+      padding: 0px;
+      font-family: "bellgothicstd-bold";
+      overflow: hidden;
+    }
+    #working .side_nav, #summary .side_nav{
+      background: #e5e5e5;
+      padding-right: 0px;
+    }
+    #working .report_info, #summary .report_info{
+      height: 120px;
+      background: #3f3f42;
+      color:#ffffff;
+      padding: 20px;
+      position: relative;
+      text-shadow:1px 1px rgba(0,0,0, 0,8);
+      -webkit-box-shadow: inset 0px -10px 5px 0px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow:    inset 0px -10px 5px 0px rgba(50, 50, 50, 0.75);
+      box-shadow:         inset 0px -10px 5px 0px rgba(50, 50, 50, 0.75);
+      border-right: 1px solid rgba(0,0,0,0.7);
+
+    }
+    #working .report_info .fa-plane, #summary .report_info .fa-plane{
+      font-size:50px;
+      padding-right: 10px;
+    }
+    #working .report_info h3, #summary .report_info h3{
+      font-size: 30px;
+      margin: 0px;
+      padding: 0px;
+      display: inline-block;
+      position: absolute;
+    }
+    #working .report_info h6, #summary .report_info h6{
+      font-size: 12px;
+      color:#8f8f92;
+      margin: 0px;
+      padding: 0px;
+      display: inline-block;
+      position: absolute;
+      top:55px;
+    }
+    #working .report_info p, #summary .report_info p{
+      font-size: 15px;
+      color:#8f8f92;
+      padding: 0px;
+      margin: 10px 0px 0px 0px;
+      text-shadow:none;
+    }
+    #working .report_info p span.online, #summary .report_info p span.online{
+       color: #5ac65f;
+    }
+    #working .surveyor_info, #summary .surveyor_info{
+      height: 120px;
+      background: #494949;
+      color:#ffffff;
+      padding: 10px;
+      position: relative;
+      text-align: center;
+      text-shadow:1px 1px rgba(0,0,0, 0,8);
+      -webkit-box-shadow: inset 0px -10px 5px 0px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow:    inset 0px -10px 5px 0px rgba(50, 50, 50, 0.75);
+      box-shadow:         inset 0px -10px 5px 0px rgba(50, 50, 50, 0.75);
+      border-left: 1px solid rgba(255,255,255,0.1);
+    }
+    #working .surveyor_info .icon_wrapper, #summary .surveyor_info .icon_wrapper{
+      width: 60px;
+      height: 60px;
+      border-radius: 60px;
+      border: 3px solid #ffffff;
+      background: #5ac65f;
+      display: inline-block;
+    }
+    #working .surveyor_info .icon_wrapper i, #summary .surveyor_info .icon_wrapper i{
+      font-size: 40px;
+    }
+    #working .surveyor_info h4,  #summary .surveyor_info h4{
+      font-size: 18px;
+      color:#878787;
+    }
+    #working .category{
+      padding: 20px 10px 0px 20px;
+      border-top:1px solid #ffffff;
+      border-bottom: 1px solid #ffffff;
+        height: 480px;
+        max-height: 480px;
+        overflow-y: auto;
+    }
+    #summary .pendingreport{
+        padding: 20px 10px 0px 20px;
+        border-top:1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
+        height: 400px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    #working .category ul, #summary .pendingreport ul{
+      margin-top: 0px;
+      padding: 0px;
+      overflow: hidden;
+    }
+    #working .category ul li{
+      list-style: none;
+      border: 1px solid #3f3f42;
+      display: inline-block;
+      float: left;
+      width:140px;
+      height: 40px;
+      margin:0px 12px 15px 0px;
+      position: relative;
+      font-family: "bellgothicstd-bold";
+      cursor: pointer;
+    }
+    #summary .pendingreport ul li{
+        list-style: none;
+        border: 1px solid #3f3f42;
+        width:90%;
+        height: 40px;
+        margin:0px 12px 15px 0px;
+        font-family: "bellgothicstd-bold";
+        font-size: 25px;
+        line-height: 40px;
+        padding: 2px 10px;
+        cursor: pointer;
+        position: relative;
+    }
+     #summary .pendingreport ul li span{
+         background: #3f3f42;
+         display: inline-block;
+         color: #ffffff;
+         font-size: 16px;
+         line-height: 38px;
+         text-align: center;
+         width: 60%;
+         padding: 0px 5px;
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         position: absolute;
+         top: 0px;
+         right: 0px;
+   }
+    #summary .pendingreport ul li span i{
+        font-size: 22px;
+    }
+    #summary .pendingreport ul li:hover span{
+        background: none;
+        color: #3f3f42;
+    }
+    #summary .pendingreport ul li.active{
+        background: #3f3f42;
+        color: #ffffff;
+    }
+    #summary .pendingreport ul li.active span{
+        background: #e5e5e5;
+        color: #3f3f42;
+    }
+    #working .category ul li i{
+      display: inline-block;
+      width:40px;
+      height: 38px;
+      padding: 3px 5px;
+      line-height: 38px;
+      font-size: 17px;
+      text-transform: uppercase;
+      position: absolute;
+    }
+    #working .category ul li span{
+      background: #3f3f42;
+      display: inline-block;
+      color: #ffffff;
+      font-size: 14px;
+      line-height: 38px;
+      width: 98px;
+      padding: 0px 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      float: right;
+    }
+    #working .category ul li:hover i{
+        background: #3f3f42;
+        color: #ffffff;
+    }
+
+    #working .category ul li:hover span{
+        background: #3f3f42;
+        color: #ffffff;
+    }
+
+    #working .category ul li.active i{
+      background: #3f3f42;
+      color: #ffffff;
+    }
+
+    #working .category ul li.active span{
+      background: none;
+      color: #3f3f42;
+    }
+
+    #working .report_control, #summary .report_control{
+      bottom: 0px;
+      height: 100px;
+      width:100%;
+      padding: 20px 10px 10px 20px;
+      position: absolute;
+    }
+    #working .form-box {
+      background: url("../images/bg/chart.png") right top no-repeat #efefef;
+      background-size: cover;
+      height: 410px;
+      padding:20px 10px 0px 10px;
+      font-size: 17px;
+      color:#3f3f42;
+      font-family: "bangla_mnregular";
+    }
+    #working .form-box .group{
+      margin-bottom: 15px;
+    }
+    #working .form-box .group label{
+      display: block;
+    }
+    #working .form-box .float{
+      float: left;
+      display: inline-block;
+      margin-right: 15px;
+    }
+    #working .form-box .float .btn-group{
+      width: auto;
+    }
+    #working .form-box .btn-group{
+      width: 90%;
+    }
+    #working .form-box div[class^="col-sm"] input, #working .form-box div[class^="col-sm"] textarea{
+      width: 90%;
+      border-radius: 4px;
+      border:1px solid #cccccc;
+      padding:6px 12px;
+      font-size: 14px;
+    }
+    #working .form-box .customToggle #lbl_Toggle {
+  color: transparent;
+  background: url('../images/bg/sprite.png') -40px 0  no-repeat;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px #888, 0 0px 3px #777, inset 0 -1px 5px #333;
+  display: block;
+  position: relative;
+  text-indent: 100%;
+  width: 65px; height: 29px;
+  -webkit-transition: background-position .3s ease;
+  -moz-transition: background-position .3s ease;
+  cursor: pointer;
+  font-size: .01em;
+  float: left;
+}
+#working .form-box .customToggle input[type=checkbox] {
+  display: none;
+}
+ #working .form-box .customToggle #lbl_Toggle span {
+  background: url('../images/bg/sprite.png') -1px -30px no-repeat;
+  border: 0px solid transparent;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px #000, 0 1px 6px #000;
+  content: "";
+  display: block;
+  position: absolute; top: 0; left: -1px;
+  width: 28px; height: 28px;
+  -webkit-transition: left .3s ease;
+  -moz-transition: left .3s ease;
+}
+#working .form-box .customToggle input[type=checkbox]:checked + #lbl_Toggle {
+  background-position: 0 0;
+}
+#working .form-box .customToggle input[type=checkbox]:checked + #lbl_Toggle span {
+  left: 40px;
+}
+#working .record-panel{
+  margin: 10px 10px;
+  background:#d5d5d5;
+  border:1px solid #c8c8c8;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      -moz-box-shadow:    0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      box-shadow:         0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      height: 235px;
+      overflow-y: scroll;
+}
+#working .record-panel ul{
+  margin:0px;
+  padding:0px;
+}
+#working .record-panel ul li{
+  list-style: none;
+  border-bottom:1px solid #bfbfbf;
+  padding:5px;
+  font-family: "Arial Narrow", Arial, sans-serif;;
+}
+#working .record-panel ul li.YesAirworthy{
+  background:#ee9b9b !important;
+}
+#working .record-panel ul li span{
+  margin-right: 10px;
+  line-height: 32px;
+  font-size: 20px;
+  display: inline-block;
+}
+#working .record-panel ul li span.square{
+  width: 7%;
+  height: 30px;
+  border:1px solid #3f3f42;
+  text-align: center;
+  font-family: "bellgothicstd-bold";
+}
+
+#working .record-panel ul li span.localtion{
+  width:6%;
+    margin-right: 20px;
+}
+#working .record-panel ul li span.itemdesc{
+
+    height: 30px;
+  font-size: 18px;
+  width:27%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#working .record-panel ul li span.condition{
+  width: 12%;
+  line-height: 120%;
+  padding: 3px 10px;
+  font-size: 15px;
+  text-align: center;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      -moz-box-shadow:    0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      box-shadow:         0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      font-family: "bangla_mnregular";
+      color: #ffffff;
+}
+#working .record-panel ul li span.condition.Major{
+  background:#900707;
+  
+}
+#working .record-panel ul li span.condition.Minor{
+  background:#9b9b9b;
+}
+#working .record-panel ul li span.action{
+  width: 19%;
+  line-height: 120%;
+  padding: 3px 10px;
+  font-size: 15px;
+  text-align: center;
+  -webkit-box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      -moz-box-shadow:    0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      box-shadow:         0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      font-family: "bangla_mnregular";
+      color: #ffffff;
+      background: url("../images/bg/icons.png") no-repeat 0 0 #36969e;
+      background-size: 15px 150px;
+}
+#working .record-panel ul li span.action.Adjust{
+  background-position: 5px -30px;
+}
+#working .record-panel ul li span.action.Repair{
+  background-position: 5px 3px;
+}
+#working .record-panel ul li span.action.Replace{
+  background-position: 5px -64px;
+}
+#working .record-panel ul li span.YesAirworthy{
+  color:#ffffff;
+    border:none;
+    background: #900707;
+}
+#working .record-panel ul li span.NoAirworthy{
+  color:#333333;
+}
+#working .record-panel ul li span.close{
+  font-size: 30px;
+  cursor: pointer;
+}
+#working .record-panel ul li:nth-child(odd){
+  background: #e8e8e8;
+}
+
+     #working .button, #summary .button{
+      width: 140px;
+      height: 40px;
+      float:left;
+      margin:0px 10px 0px 0px;
+      text-align: center;
+      font-size: 20px;
+      line-height: 40px;
+      font-family: "bangla_mnregular";
+      -webkit-box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      -moz-box-shadow:    0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      box-shadow:         0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+      cursor: pointer;
+    }
+     #working .button.grey, #summary .button.grey{
+      color:#5a5a5a;
+      text-shadow:0px 1px rgba(255,255,255,0.8);
+      background: #c9c9c9;
+      border: 1px solid #9c9c9c;
+    }
+     #working .button.grey:hover, #summary .button.grey:hover{
+      background: #9c9c9c;
+    }
+     #working .button.green, #summary .button.green{
+      color:#ffffff;
+      text-shadow:0px 1px rgba(0,0,0,0.5);
+      background: #5ac65f;
+      border: 1px solid #1e9024;
+    }
+     #working .button.green:hover, #summary .button.green:hover{
+      background: #1e9024;
+    }
+    #working .button.black, #summary .button.black{
+      color:#ccc;
+      text-shadow:0px 1px rgba(0,0,0,0.3);
+      background: #555;
+      border: 1px solid #000000;
+    }
+     #working .button.black:hover, #summary .button.black:hover{
+      background: #000000;
+    }
+    #working .button.blue, #summary .button.blue{
+        color:#ffffff;
+        text-shadow:0px 1px rgba(0,0,0,0.3);
+        background: #509bcb;
+        border: 1px solid #3278a4;
+    }
+    #working .button.blue:hover, #summary .button.blue:hover{
+        background: #3278a4;
+    }
+    #working .button.red, #summary .button.red{
+        color:#ffffff;
+        text-shadow:0px 1px rgba(0,0,0,0.3);
+        background: #da365c;
+        border: 1px solid #a32341;
+    }
+    #working .button.red:hover, #summary .button.red:hover{
+        background: #a32341;
+    }
+
+
+
+    #working .radio-group {
+        float:left;
+    }
+
+    #working .radio-group label {
+        float:left;
+        background-color:#EFEFEF;
+        overflow:auto;
+
+        border-top: 1px solid #cccccc;
+        border-right: 1px solid #cccccc;
+        border-bottom: 1px solid #cccccc;
+
+    }
+    #working .radio-group label:first-child{
+        border-radius: 4px 0 0 4px;
+        border-left: 1px solid #cccccc;
+
+    }
+    #working .radio-group label:last-child{
+        border-radius: 0 4px 4px 0;
+    }
+
+    #working .radio-group label span {
+        text-align:center;
+        display:block;
+        font-size: 14px;
+        line-height: 1.42857143;
+        font-weight:normal;
+        color: #333333;
+        padding: 6px 12px;
+    }
+
+    #working .radio-group label input {
+        position:absolute;
+        top:-20px;
+        display: none;
+    }
+
+
+    #working #radio_condition input:checked + span {
+        background-color:#feb73c;
+        color:#ffffff;
+    }
+    #working #radio_action input:checked + span {
+        background-color:#36969e;
+        color:#ffffff;
+    }
+    #working #radio_airworthy input:checked + span {
+        background-color:#900707;
+        color:#ffffff;
+    }
+
+    #working .nya-selectpicker-out{
+        border:1px solid #cccccc;
+        border-radius: 4px;
+        padding:6px 12px;
+        height: 32px;
+        min-width: 180px;
+    }
+
+    #summary .report_control{
+        bottom: 100px;
+    }
+
+    #summary .button{
+        width:90%;
+        margin: 0 0 10px 0;
+    }
+
+    #summary .record-panel{
+        margin: 10px 10px;
+        background:#d5d5d5;
+        border:1px solid #c8c8c8;
+        -webkit-box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+        -moz-box-shadow:    0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+        box-shadow:         0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+        height: 97%;
+        overflow-y: scroll;
+    }
+    #summary .record-panel ul{
+        margin:0px;
+        padding:0px;
+    }
+    #summary .record-panel ul li{
+        list-style: none;
+        border-bottom:1px solid #bfbfbf;
+        padding:5px;
+        font-family: "Arial Narrow", Arial, sans-serif;;
+    }
+    #summary .record-panel ul li.YesAirworthy{
+        background:#ee9b9b !important;
+    }
+    #summary .record-panel ul li span{
+        margin-right: 10px;
+        line-height: 32px;
+        font-size: 20px;
+        display: inline-block;
+    }
+    #summary .record-panel ul li span.square{
+        width: 7%;
+        height: 30px;
+        border:1px solid #3f3f42;
+        text-align: center;
+        font-family: "bellgothicstd-bold";
+    }
+
+    #summary .record-panel ul li span.localtion{
+        width:6%;
+        margin-right: 20px;
+    }
+    #summary .record-panel ul li span.itemdesc{
+
+        height: 30px;
+        font-size: 18px;
+        width:30%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    #summary .record-panel ul li span.condition{
+        width: 12%;
+        line-height: 120%;
+        padding: 3px 10px;
+        font-size: 15px;
+        text-align: center;
+        -webkit-box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+        -moz-box-shadow:    0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+        box-shadow:         0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+        font-family: "bangla_mnregular";
+        color: #ffffff;
+    }
+    #summary .record-panel ul li span.condition.Major{
+        background:#900707;
+
+    }
+    #summary .record-panel ul li span.condition.Minor{
+        background:#9b9b9b;
+    }
+    #summary .record-panel ul li span.action{
+        width: 20%;
+        line-height: 120%;
+        padding: 3px 10px;
+        font-size: 15px;
+        text-align: center;
+        -webkit-box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+        -moz-box-shadow:    0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+        box-shadow:         0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+        font-family: "bangla_mnregular";
+        color: #ffffff;
+        background: url("../images/bg/icons.png") no-repeat 0 0 #36969e;
+        background-size: 15px 150px;
+    }
+    #summary .record-panel ul li span.action.Adjust{
+        background-position: 5px -30px;
+    }
+    #summary .record-panel ul li span.action.Repair{
+        background-position: 5px 3px;
+    }
+    #summary .record-panel ul li span.action.Replace{
+        background-position: 5px -64px;
+    }
+    #summary .record-panel ul li span.YesAirworthy{
+        color:#ffffff;
+        border:none;
+        background: #900707;
+    }
+    #summary .record-panel ul li span.NoAirworthy{
+        color:#333333;
+    }
+    #summary .record-panel ul li span.close{
+        font-size: 0px;
+        cursor: pointer;
+    }
+    #summary .record-panel ul li:nth-child(odd){
+        background: #e8e8e8;
+    }
+    @-webkit-keyframes ROTATE {
+        from	{ -webkit-transform: rotate(0) }
+        to		{ -webkit-transform: rotate(360deg) }
+
+    }
+    @-moz-keyframes ROTATE {
+        from	{ -moz-transform: rotate(0) }
+        to		{ -moz-transform: rotate(360deg) }
+    }
+    @-ms-keyframes ROTATE {
+        from	{ -ms-transform: rotate(0) }
+        to		{ -ms-transform: rotate(360deg) }
+    }
+    @-o-keyframes ROTATE {
+        from	{ -o-transform: rotate(0) }
+        to		{ -o-transform: rotate(360deg) }
+    }
+    @keyframes ROTATE {
+        from	{ transform: rotate(0) }
+        to		{ transform: rotate(360deg) }
+    }
+
+    #summary .loading{
+        font-size:30px;
+    }
+
+    #summary .loading:before {
+        -webkit-animation: ROTATE 5s infinite linear;
+        -moz-animation:    ROTATE 5s infinite linear;
+        -ms-animation:     ROTATE 5s infinite linear;
+        -o-animation:     ROTATE 5s infinite linear;
+        animation:     ROTATE 5s infinite linear;
+    }
+
+}
+/* Responsive: Portrait tablets and down */
+@media screen and (max-width: 768px) {
+    #working .report_info h3, #summary .report_info h3{
+        font-size: 18px;
+        margin: 0px;
+        padding: 0px;
+        display: inline-block;
+        position: absolute;
+    }
+    #working .report_info h6, #summary .report_info h6{
+    font-size: 12px;
+    color:#8f8f92;
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+    position: absolute;
+    top:45px;
+    }
+    #working .report_info p, #summary .report_info p{
+        font-size: 12px;
+        color:#8f8f92;
+        padding: 0px;
+        margin: 10px 0px 0px 0px;
+        text-shadow:none;
+    }
+    #working .surveyor_info h4{
+        font-size: 15px;
+        color:#878787;
+    }
+    #working .category{
+        height: 700PX;
+        max-height: 700px;
+    }
+    #working .category ul li{
+    list-style: none;
+    border: 1px solid #3f3f42;
+    display: inline-block;
+    float: left;
+    width:auto;
+    height: 50px;
+    margin:0px 10px 15px 0px;
+    position: relative;
+    font-family: "bellgothicstd-bold";
+    cursor: pointer;
+    }
+    #working .category ul li i{
+    display: inline-block;
+    width:40px;
+    height: 38px;
+    padding: 3px 5px;
+    line-height: 38px;
+    font-size: 17px;
+    text-transform: uppercase;
+    position: absolute;
+    display:none;}
+    #working .category ul li span
+    {
+    background: #3f3f42;
+    display: inline-block;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 48px;
+    width: 98px;
+    padding: 0px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: right;
+    text-align: center;
+    }
+    #working #btn_save{
+        position: absolute;
+        top:-40px;
+    }
+    #summary .pendingreport{
+        max-height: 600px;
+        height: 600px;
+    }
+    #summary .pendingreport ul li span{
+        display: none;
+    }
+    #summary .report_control .button{
+        width: 90%;
+        margin-bottom: 10px;
+    }
+    #working .button, #summary .button{
+        width: 100px;
+        height: 40px;
+        float:left;
+        margin:0px 10px 0px 0px;
+        text-align: center;
+        font-size: 20px;
+        line-height: 40px;
+        font-family: "bangla_mnregular";
+        box-shadow:         0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+        cursor: pointer;
+    }
+    #ddl_zone,#ddl_location{
+        min-width:140px !important;
+        width:140px !important;
+    }
+
+    #ddl_item{
+        width:200px !important;
+    }
+    #ddl_description{
+        width:200px !important;
+    }
+    #working .form-box .float{
+        float: left;
+        display: inline-block;
+        margin-right: 3px;
+    }
+    #working .record-panel{margin: 10px 10px;
+        background:#d5d5d5;
+        border:1px solid #c8c8c8;
+        box-shadow:         0px 1px 1px 0px rgba(255, 255, 255, 0.75);
+        height: 490px;
+        overflow-y: scroll;
+
+    }
+
+
+}
+

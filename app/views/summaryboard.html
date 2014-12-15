@@ -1,0 +1,154 @@
+<div  id="summary" class="container">
+
+    <div class="row" style="height: 100%;">
+        <div class="col-sm-4 side_nav" style="height: 100%;">
+            <div class="report_info col-sm-7">
+                <i class="fa fa-plane"></i>
+                <h3>{{regno}}</h3>
+                <h6>{{todayDate}}</h6>
+
+                <p>status <span ng-class="connetionState[0].status"><i class="fa fa-circle "></i> {{connetionState[0].message}}</span> </p>
+            </div>
+            <div class="surveyor_info col-sm-5">
+                <div class="icon_wrapper"><i class="fa fa-user"></i></div>
+                <h4>{{surveyor}}</h4>
+            </div>
+            <div class="clearfix"></div>
+            <div class="pendingreport">
+                <ul>
+                    <li ng-repeat="pendingreport in pendingreports" id={{pendingreport.ReportID}} ng-click="populateReport(pendingreport.ReportID)" ng-class="navClass('{{pendingreport.ReportID}}')">
+                        {{pendingreport.RegNo}}<span>{{pendingreport.ReportID}}&nbsp;&nbsp;&nbsp;<i class="fa fa-newspaper-o"></i></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="report_control col-sm-12">
+                <div class="button grey" id="btn_back" data-toggle="modal" data-target="#logoutModal">Logout</div>
+                <div class="button red" id="btn_delete" data-toggle="modal" data-target="#deleteModal">Delete</div>
+                <div class="button green" id="btn_submit" data-toggle="modal" data-target="#submitModal" ng-show="isOnline"><i class="fa fa-spinner loading" ng-show="posting"></i> Submit</div>
+                <div class="button blue" id="btn_save" data-toggle="modal" data-target="#saveModal" ng-hide="isOnline">Save</div>
+            </div>
+        </div>
+        <div class="col-sm-8" style="height: 100%;">
+            <div class="row record-panel">
+                <div class="col-sm-12" style="padding:0px;">
+                    <ul>
+                        <li ng-repeat="rpt in reportData" >
+                        <span class='square'>{{rpt.CategoryName | limitTo:2 | uppercase}}</span><span class='localtion'>{{rpt.Code}}</span><span class='itemdesc'>{{rpt.ItemDescription}}</span>
+                        <span class='condition {{rpt.Condition}}'>{{rpt.Condition}}</span><span class='action {{rpt.Action}}'>{{rpt.Action}}</span><span class='square {{rpt.AirworthinessDefect}}Airworthy'>{{rpt.AirworthinessDefect | limitTo:1}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-sm" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #c9c9c9;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel" style="color: #ffffff; text-shadow:none">Logout?</h4>
+            </div>
+            <div class="modal-body">
+                Do you want to log out from here?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="logoutIt()">Yes, please</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-sm" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #a32341;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel" style="color: #ffffff; text-shadow:none">Delete this report?</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete report <span class="highlight">{{submitRptID}}</span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="deleteIt()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #5ac65f;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel" style="color: #ffffff; text-shadow:none">Submit report?</h4>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit this report?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="submitIt()">Yes, please</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #509bcb;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel" style="color: #ffffff; text-shadow:none">Save report?</h4>
+            </div>
+            <div class="modal-body">
+               Don't worry, your report has been saved safely!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade bs-example-modal-sm" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #900707;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel" style="color: #ffffff;">Sorry, something wrong here...</h4>
+            </div>
+            <div class="modal-body">
+                {{error_message}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background: #5ac65f;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel" style="color: #ffffff;">Yahoo.. All good!</h4>
+            </div>
+            <div class="modal-body">
+                {{success_message}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+

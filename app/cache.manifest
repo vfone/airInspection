@@ -1,0 +1,43 @@
+CACHE MANIFEST
+# 2014-09-10:v1
+
+# Explicitly cached entries
+index.html
+views/login.html
+views/workingboard.html
+views/summaryboard.html
+scripts/vendor.53b9975e.js
+scripts/oldieshim.d41d8cd9.js
+scripts/scripts.1ad557b0.js
+styles/vendor.bd233937.css
+styles/main.276d9f45.css
+images/favicon.518f7b60.png
+images/logo57x57.02719373.png
+images/logo72x72.6e1bd639.png
+images/logo114x114.5c2a943c.png
+images/startup.00020c7e.png
+images/startup@2x.e62801ed.png
+images/bg/chart.9fe2bb9f.png
+images/bg/icons.fc914254.png
+images/bg/sprite.81a87d76.png
+images/bg/welcomebg.9a816f29.jpg
+fonts/banglamn-webfont.eot
+fonts/banglamn-webfont.svg
+fonts/banglamn-webfont.ttf
+fonts/banglamn-webfont.woff
+fonts/bellgothicstd-bold.eot
+fonts/bellgothicstd-bold.svg
+fonts/bellgothicstd-bold.ttf
+fonts/bellgothicstd-bold.woff
+fonts/fontawesome-webfont.eot
+fonts/fontawesome-webfont.svg
+fonts/fontawesome-webfont.ttf
+fonts/fontawesome-webfont.woff
+fonts/FontAwesome.otf
+
+# offline.html will be displayed if the user is offline
+FALLBACK:
+
+# All other resources (e.g. sites) require the user to be online.
+NETWORK:
+*

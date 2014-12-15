@@ -1,0 +1,28 @@
+<div id="login">
+    <div class="login_form">
+        <h1><i class="fa fa-paper-plane-o"></i> welcome on board </h1>
+        <div class="login_box" >
+            <div class="input">
+                <input id="txt_surveyor" placeholder="Surveyor" ng-model="surveyorName"/> <i class="fa fa-user"></i>
+                <ul id="surveyor_list" class="optionDropdown">
+                    <li ng-repeat="surveyor in surveyors | filter: surveyorName" id={{'surveyor-'+$index}} ng-click="assignToSurveyor('surveyor-'+$index, surveyor.SurveyorFullName, surveyor.SurveyorId);">{{surveyor.SurveyorFullName}}</li>
+                </ul>
+            </div>
+            <div class="input">
+                <input id="txt_regno" placeholder="RegoNo" ng-model="regNo"/> <i class="fa fa-plane"></i>
+                <ul id="regono_list" class="optionDropdown">
+                    <li ng-repeat="aircraft in aircrafts | filter: regNo" id={{'regno-'+$index}} ng-click="assignToAircraft('regno-'+$index,aircraft.RegoNumber, aircraft.AircraftTypeId, aircraft.AircraftId);">{{aircraft.RegoNumber}}</li>
+                </ul>
+            </div>
+            <a class="button" id="btn_login" ng-click="goToWorking();">
+                <i class="fa fa-check"></i>
+            </a>
+        </div>
+    </div>
+    <div class="report_dock">
+        <h2>Hoooray! All reports been submitted successfully! </h2>
+        <div class="pending" ng-repeat="pendingreport in pendingreports" id={{pendingreport.ReportID}} ng-click="goSummary(pendingreport.ReportID)">
+            <i class="fa fa-file-text-o"></i><span class="regno"><i class="fa fa-plane"></i> {{pendingreport.RegNo}}</span><span class="surveyor"><i class="fa fa-user"></i> {{pendingreport.Surveyor}}</span>
+        </div>
+    </div>
+</div>
