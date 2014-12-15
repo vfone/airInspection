@@ -61,7 +61,6 @@ function randomString(length, chars) {
 }
 
 var lookupURL = "http://cms.365cloudservices.com/api/offline/lookup";
-//var lookupURL = "feed/lookup.txt"; //TODO:live one is not working somehow, need to fix
 var localJsonVersion = getLocalStorage("JsonVersion"); //local time stamp
 
 
