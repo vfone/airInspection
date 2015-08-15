@@ -220,7 +220,6 @@ angular.module('airInspectionApp')
         $("#category-"+ cateID).addClass("active");
         $scope.categoryID = cateID;
         $scope.categoryName = cateNme;
-
         //get first option base on cateID
         $.each($scope.categoriesItemTypes, function (index) {
             var itypeID = $scope.categoriesItemTypes[index].CategoryId;
@@ -229,6 +228,13 @@ angular.module('airInspectionApp')
                 return false;
             }
         });
+        if($scope.categoryName == 'Monument' || $scope.categoryName == 'Galley'){
+          $scope.isGreyOut = true;
+        }
+        else{
+          $scope.isGreyOut = false;
+        }
+
         //$scope.$apply();
     }
     $scope.populateItemDescription = function(itemTypeID){

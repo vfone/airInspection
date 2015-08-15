@@ -375,12 +375,13 @@ html, body {
         color: #3f3f42;
     }
     #summary .pendingreport ul li.active{
-        background: #3f3f42;
+      border: 1px solid #f6cc4d;
+        background: #f6cc4d;
         color: #ffffff;
     }
     #summary .pendingreport ul li.active span{
         background: #e5e5e5;
-        color: #3f3f42;
+        color: #f6cc4d;
     }
     #working .category ul li i{
       display: inline-block;
@@ -414,9 +415,11 @@ html, body {
         background: #3f3f42;
         color: #ffffff;
     }
-
+    #working .category ul li.active{
+      border:1px solid #f6cc4d;
+    }
     #working .category ul li.active i{
-      background: #3f3f42;
+      background: #f6cc4d;
       color: #ffffff;
     }
 
@@ -565,7 +568,7 @@ html, body {
 }
 #working .record-panel ul li span.condition.Major{
   background:#900707;
-  
+
 }
 #working .record-panel ul li span.condition.Minor{
   background:#9b9b9b;
@@ -731,7 +734,9 @@ html, body {
         height: 32px;
         min-width: 180px;
     }
-
+    #working select:disabled{
+      background: #ccc;
+    }
     #summary .report_control{
         bottom: 100px;
     }
