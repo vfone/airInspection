@@ -96,7 +96,7 @@ angular.module('airInspectionApp')
     $scope.items = JSON.parse(getLocalStorage('Items'));
     //$scope.conditions = JSON.parse(getLocalStorage('Conditions'));
     //$scope.actions = JSON.parse(getLocalStorage('Actions'));
-        $scope.seatLetters = [
+    $scope.seatLetters = [
             {"Letter":"A"},
             {"Letter":"B"},
             {"Letter":"C"},
@@ -108,7 +108,7 @@ angular.module('airInspectionApp')
             {"Letter":"I"},
             {"Letter":"J"}
         ];
-        $scope.seatNumbers = [
+    $scope.seatNumbers = [
             {"Number":1},
             {"Number":2},
             {"Number":3},
@@ -461,7 +461,17 @@ $scope.doneReport = function(){
     }
 }
 $scope.extModal = function(){
+  $scope.AircraftModel = "";
+  var airtype = JSON.parse(getLocalStorage('AircraftTypes'));
+  for(var i = 0; i < airtype.length; i++){
+    if(airtype[i].AircraftTypeId == $scope.$parent.global_aircraftTypeId){
+      $scope.AircraftModel = airtype[i].AircraftTypeDescription;
+      //alert($scope.AircraftModel);
+      $('#extModal').modal();
+    }
+  }
 
-    $('#extModal').modal();
+
+
 }
 });
