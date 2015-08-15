@@ -306,5 +306,78 @@ angular.module('airInspectionApp')
             }
         }
 
+        //submit all reports
+        $scope.submitAll = function(){
+          if(getLocalStorage($scope.submitRptID) == null){
+            //no record found
+            $scope.error_message = "Report can't be found, please try again!";
 
+            //******** populate side nav
+            arrPendingReports = [];
+            //get list of pending report
+            for(var key in localStorage) {
+              if((/^report_/).test(key)){
+                //this is a pending report
+                //get RegNo base on report id
+                var obj = JSON.parse(getLocalStorage(key));
+                var regNo = obj['RegNo'].toString();
+                var surveyor = obj['Surveyor'].toString();
+
+                arrPendingReports.push({"ReportID": key, "RegNo": regNo, "Surveyor": surveyor});
+              }
+            }
+            $scope.pendingreports = arrPendingReports;
+            $scope.submitRptID = '';
+            $('#errorModal').modal();
+          }
+          else {
+            //only submit if $scope.posting == false, means post is NOT in progress
+            if($scope.posting != true)
+            {
+
+              for(var i = 0; i < $scope.pendingreports.length; i++){
+                $scope.submitRptID =  $scope.pendingreports[i].ReportID;
+                //submit here
+                var dataObj = JSON.stringify(JSON.parse(getLocalStorage($scope.submitRptID)));
+
+                var res = $http.post($scope.postURL, dataObj);
+
+                res.success(function(data, status, headers, config) {
+                  console.log("status:" + status +"; headers: " + headers + "; config: " + config);
+
+                  //once successful, remove report from local storage and re-populate side nav
+                  removeLocalStorage($scope.submitRptID);
+                  //******** populate side nav
+                  arrPendingReports = [];
+                  //get list of pending report
+                  for(var key in localStorage) {
+                    if((/^report_/).test(key)){
+                      //this is a pending report
+                      //get RegNo base on report id
+                      var obj = JSON.parse(getLocalStorage(key));
+                      var regNo = obj['RegNo'].toString();
+                      var surveyor = obj['Surveyor'].toString();
+
+                      arrPendingReports.push({"ReportID": key, "RegNo": regNo, "Surveyor": surveyor});
+                    }
+                  }
+                  $scope.pendingreports = arrPendingReports;
+                  $scope.submitRptID = '';
+                  $(".record-panel ul").html('');
+                  $scope.posting = false;
+                  $scope.success_message = "You report been submitted!";
+                  $('#successModal').modal();
+
+                });
+                res.error(function(data, status, headers, config) {
+                  console.log("status:" + status +"; headers: " + headers + "; config: " + config);
+                  $scope.posting = false;
+                  $scope.error_message = "I NEED API TO SUBMIT!";
+                  $('#errorModal').modal();
+                });
+
+              }
+            }
+          }
+        }
     });

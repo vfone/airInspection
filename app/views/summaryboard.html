@@ -25,6 +25,7 @@
                 <div class="button grey" id="btn_back" data-toggle="modal" data-target="#logoutModal">Logout</div>
                 <div class="button red" id="btn_delete" data-toggle="modal" data-target="#deleteModal">Delete</div>
                 <div class="button green" id="btn_submit" data-toggle="modal" data-target="#submitModal" ng-show="isOnline"><i class="fa fa-spinner loading" ng-show="posting"></i> Submit</div>
+              <div class="button green" id="btn_submit" data-toggle="modal" data-target="#submitAllModal" ng-show="isOnline"><i class="fa fa-spinner loading" ng-show="posting"></i> Submit All</div>
                 <div class="button blue" id="btn_save" data-toggle="modal" data-target="#saveModal" ng-hide="isOnline">Save</div>
             </div>
         </div>
@@ -97,6 +98,24 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm" id="submitAllModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background: #5ac65f;">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="color: #ffffff; text-shadow:none">Submit all reports?</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to submit all reports?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="submitAll()">Yes, please</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
