@@ -106,7 +106,6 @@ angular.module('airInspectionApp')
             }
         }
         $scope.pendingreports = arrPendingReports;
-        console.log($scope.pendingreports);
         if(arrPendingReports.length > 0){
             $(".report_dock h2").hide();
             $(".report_dock div").show();

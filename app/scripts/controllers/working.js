@@ -315,7 +315,6 @@ angular.module('airInspectionApp')
 
 $scope.saveRecord = function(){
     var flag = true;
-
     //validation
     if($scope.categoryName == "")
     {
@@ -378,9 +377,10 @@ $scope.saveRecord = function(){
         }
 
         //check if any report been created for this session, otherwise create one and start inserting record into it
-        if(getLocalStorage(this.$parent.global_ReportID) == null){
-            //no report created, create one
+      //console.log(getLocalStorage(this.$parent.global_ReportID));
 
+      if(getLocalStorage(this.$parent.global_ReportID) == null){
+            //no report created, create one
             var record = '{"AuthKey":"CT12345678","RegNo": "' + $scope.regno + '", "AircraftId": "' + $scope.$parent.global_aircraftId + '", "Surveyor": "' + $scope.surveyor + '", "SurveyorId": "' + $scope.$parent.global_surveyorId + '",';
             record+='"Records":[';
             record +='{"CategoryName":"' + $scope.categoryName + '", "ZoneName":"", "ZoneID":"999999", "SeatNo":"' + seatL+''+seatN + '", "Code":"'+ $scope.myLocation.Code + '", "LocationId":"'+ $scope.myLocation.LocationId + '", "ItemType":"'+ $scope.myItem.ItemTypeDescription + '","ItemTypeId":"'+ $scope.myItem.ItemTypeId + '", "ItemDescription":"'+ $scope.myDescription.ItemDescription + '", "ItemId":"'+ $scope.myDescription.ItemId + '", "Comment":"'+ $scope.myComment + '", "Condition":"'+ $scope.checkRadioText('#radio_condition') +  '","ConditionId":"'+ $scope.checkRadioValue('#radio_condition') +  '", "Action":"'+ $scope.checkRadioText('#radio_action') + '","ActionId":"'+ $scope.checkRadioValue('#radio_action') +  '", "AirworthinessDefect":"'+ $scope.checkRadioText('#radio_airworthy') +'"}';
@@ -390,7 +390,7 @@ $scope.saveRecord = function(){
             //TODO:get record insert in JSON
             var feed = JSON.parse(getLocalStorage(this.$parent.global_ReportID));
 
-            record +='{"CategoryName":"' + $scope.categoryName + '", "ZoneName":"", "ZoneID":"999999", "SeatNo":"' + seatL+''+seatN + '", "Code":"'+ $scope.myLocation.Code + '", "LocationId":"'+ $scope.myLocation.LocationId + '", "ItemType":"'+ $scope.myItem.ItemTypeDescription + '","ItemTypeId":"'+ $scope.myItem.ItemTypeId + '", "ItemDescription":"'+ $scope.myDescription.ItemDescription + '", "ItemId":"'+ $scope.myDescription.ItemId + '", "Comment":"'+ $scope.myComment + '", "Condition":"'+ $scope.checkRadioText('#radio_condition') +  '","ConditionId":"'+ $scope.checkRadioValue('#radio_condition') +  '", "Action":"'+ $scope.checkRadioText('#radio_action') + '","ActionId":"'+ $scope.checkRadioValue('#radio_action') +  '", "AirworthinessDefect":"'+ $scope.checkRadioText('#radio_airworthy') +'"}';
+            var record ='{"CategoryName":"' + $scope.categoryName + '", "ZoneName":"", "ZoneID":"999999", "SeatNo":"' + seatL+''+seatN + '", "Code":"'+ $scope.myLocation.Code + '", "LocationId":"'+ $scope.myLocation.LocationId + '", "ItemType":"'+ $scope.myItem.ItemTypeDescription + '","ItemTypeId":"'+ $scope.myItem.ItemTypeId + '", "ItemDescription":"'+ $scope.myDescription.ItemDescription + '", "ItemId":"'+ $scope.myDescription.ItemId + '", "Comment":"'+ $scope.myComment + '", "Condition":"'+ $scope.checkRadioText('#radio_condition') +  '","ConditionId":"'+ $scope.checkRadioValue('#radio_condition') +  '", "Action":"'+ $scope.checkRadioText('#radio_action') + '","ActionId":"'+ $scope.checkRadioValue('#radio_action') +  '", "AirworthinessDefect":"'+ $scope.checkRadioText('#radio_airworthy') +'"}';
 
             feed['Records'].push(JSON.parse(record));
             setLocalStorage(this.$parent.global_ReportID, JSON.stringify(feed));
@@ -437,7 +437,7 @@ $scope.deleteIt = function(){
     //TODO: delete item here
     var idx = parseInt(recID.replace('rec-', ''));
     $(".record-panel ul li#"+recID).remove();
-    console.log(this.$parent.global_ReportID);
+    //console.log(this.$parent.global_ReportID);
     //remove from JSON in local storage
     var feed = JSON.parse(getLocalStorage(this.$parent.global_ReportID));
     feed['Records'].splice(idx,1);

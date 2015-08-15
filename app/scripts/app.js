@@ -104,7 +104,6 @@ function writeLookUpToLocal(url){
 function compareJsonVersion(url){
     $.getJSON(url, function(data) {
         var liveJsonVersion = JSON.stringify(data.JsonVersion);
-        console.log("local: " + localJsonVersion + "; live: "+ liveJsonVersion);
         if(localJsonVersion != liveJsonVersion){
             //JSON been updated, local data need to be updated
             writeLookUpToLocal(lookupURL);

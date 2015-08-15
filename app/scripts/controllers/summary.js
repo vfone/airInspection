@@ -85,7 +85,7 @@ angular.module('airInspectionApp')
 
         $scope.populateReport = function(reportID){
             $scope.submitRptID = reportID;
-            console.log("submitRptID: " + $scope.submitRptID);
+            //console.log("submitRptID: " + $scope.submitRptID);
             var feed = JSON.parse(getLocalStorage(reportID));
             $scope.reportData = feed['Records'];
             $("#summary .pendingreport ul li.active").removeClass("active");
@@ -264,7 +264,7 @@ angular.module('airInspectionApp')
                 {
                     //submit here
                     var dataObj = JSON.stringify(JSON.parse(getLocalStorage($scope.submitRptID)));
-                    console.log(dataObj);
+
                     var res = $http.post($scope.postURL, dataObj);
 
                     res.success(function(data, status, headers, config) {
