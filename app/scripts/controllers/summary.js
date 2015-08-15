@@ -12,7 +12,7 @@ var urlPath = window.location.hash.substr(1).split('/');
 
 
 angular.module('airInspectionApp')
-    .controller('SummaryCtrl', function ($scope, $routeParams, $http) {
+    .controller('SummaryCtrl', function ($scope, $rootScope, $routeParams, $http) {
 
 
         //assign report info
@@ -182,6 +182,7 @@ angular.module('airInspectionApp')
             $scope.$parent.global_aircraftId = '';
             $scope.$parent.global_aircraftTypeId = '';
             window.location.href="#";
+            $rootScope.global_ReportID = "report_"+randomString(6,"*");
             $('.modal-backdrop').remove();
         }
 
