@@ -40,6 +40,7 @@ angular.module('airInspectionApp')
             for (var i = 0; i < items.length; i++) {
                 var item = items[i];
                 if (item.ItemTypeId == this.ItemTypeId) {
+                  console.log(item);
                     filtered.push(item);
                 }
             }
@@ -215,11 +216,12 @@ angular.module('airInspectionApp')
     $scope.ItemTypeId = '';
     //TODO: check if need to generate group buttons for condition, action, etc from JSON data. For now they are static
 
-    $scope.populateDropDowns = function(cateID, cateNme){
+    $scope.populateDropDowns = function(cateID, cateNme, cateDisplaySeat){
         $(".active").removeClass("active");
         $("#category-"+ cateID).addClass("active");
         $scope.categoryID = cateID;
         $scope.categoryName = cateNme;
+        $scope.displaySeat = cateDisplaySeat;
         //get first option base on cateID
         $.each($scope.categoriesItemTypes, function (index) {
             var itypeID = $scope.categoriesItemTypes[index].CategoryId;
@@ -228,12 +230,12 @@ angular.module('airInspectionApp')
                 return false;
             }
         });
-        if($scope.categoryName == 'Monument' || $scope.categoryName == 'Galley'){
-          $scope.isGreyOut = true;
-        }
-        else{
-          $scope.isGreyOut = false;
-        }
+        //if($scope.categoryName == 'Monument' || $scope.categoryName == 'Galley'){
+        //  $scope.isGreyOut = true;
+        //}
+        //else{
+        //  $scope.isGreyOut = false;
+        //}
 
         //$scope.$apply();
     }

@@ -49,6 +49,29 @@ angular.module('airInspectionApp')
 
         $('#'+el).parents('.input').find(".optionDropdown").slideUp();
     };
+    $scope.verifyPasscode = function(idx){
+      $('.passcode_form .passcode_input').eq(idx+1).val('').focus();
+
+     if($scope.passcode1 != undefined && $scope.passcode2 != undefined && $scope.passcode3 != undefined && $scope.passcode4 != undefined){
+        if($scope.passcode1.toString() + $scope.passcode2.toString() + $scope.passcode3.toString() + $scope.passcode4.toString() == passcode ){
+          //hide passcode show login and report
+          $scope.isPasscodeWrong = false;
+          $scope.isPasscodeVerified = true;
+        }
+        else{
+          //show alert wrong passcode
+          $scope.passcode1 = undefined;
+          $scope.passcode2 = undefined;
+          $scope.passcode3 = undefined;
+          $scope.passcode4 = undefined;
+          $('.passcode_form .passcode_input').val('');
+          $('.passcode_form .passcode_input').eq(0).focus();
+          $scope.isPasscodeWrong = true;
+          $scope.isPasscodeVerified = false;
+        }
+     }
+
+    };
     $scope.goToWorking = function(){
         //check if survey and regno been selected
         if($("#txt_surveyor").val()!= "" && $("#txt_regno").val() != "" && $scope.$parent.global_aircraftTypeId != "" && $scope.$parent.global_surveyorId != ""){

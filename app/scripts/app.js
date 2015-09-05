@@ -60,8 +60,10 @@ function randomString(length, chars) {
     return result;
 }
 
-var lookupURL = "http://cms.365cloudservices.com/api/offline/lookup";
+//var lookupURL = "http://cms.365cloudservices.com/api/offline/lookup";
+var lookupURL = "http://cmsapi.cocodemo.com/api/lookups";
 var localJsonVersion = getLocalStorage("JsonVersion"); //local time stamp
+var passcode = "7678";
 
 
 //function check local storage
