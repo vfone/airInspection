@@ -1,5 +1,5 @@
 <div  id="working" class="container">
-   
+
         <div class="row" style="height: 100%;">
         <div class="col-sm-4 side_nav" style="height: 100%;">
             <div class="report_info col-sm-7">
@@ -16,7 +16,7 @@
             <div class="clearfix"></div>
             <div class="category">
                 <ul>
-                    <li ng-repeat="category in categories" id={{'category-'+category.CategoryId}} ng-click="populateDropDowns(category.CategoryId, category.CategoryName)">
+                    <li ng-repeat="category in categories" id={{'category-'+category.CategoryId}} ng-click="populateDropDowns(category.CategoryId, category.CategoryName, category.DisplaySeatPanel)">
                         <i>{{category.CategoryName | limitTo:2 }}</i><span>{{category.CategoryName}}</span>
                     </li>
                     <li ng-click="extModal();"><i>PC</i><span>Plane Configuration</span></li>
@@ -45,11 +45,11 @@
                         </div>
                         <div class="col-sm-8">
                             <label><i class="fa fa-ticket" ></i> Seat No.</label><br/>
-                            <select ng-model="mySeatLetter" id="ddl_seatletter"   style="min-width: 50px; width: 100px;" class="nya-selectpicker-out" ng-options="seatLetter.Letter for seatLetter in seatLetters track by seatLetter.Letter">
+                            <select ng-model="mySeatLetter" ng-disabled="!displaySeat" id="ddl_seatletter"   style="min-width: 50px; width: 100px;" class="nya-selectpicker-out" ng-options="seatLetter.Letter for seatLetter in seatLetters track by seatLetter.Letter">
                                 <option value="">-- Row --</option>
                             </select>
 
-                            <select ng-model="mySeatNumber" id="ddl_seatnumber"  style="min-width: 50px; width: 100px;" class="nya-selectpicker-out" ng-options="seatNumber.Number for seatNumber in seatNumbers track by seatNumber.Number">
+                            <select ng-model="mySeatNumber" ng-disabled="!displaySeat" id="ddl_seatnumber"  style="min-width: 50px; width: 100px;" class="nya-selectpicker-out" ng-options="seatNumber.Number for seatNumber in seatNumbers track by seatNumber.Number">
                                 <option value="">-- No. --</option>
                             </select>
                             <!--input class="formstyle" id="txt_seatno" placeholder="please enter seat no. here" ng-model="mySeatNo" ng-init="mySeatNo=''"></input-->
@@ -220,10 +220,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Plane Configuration</h4>
+                <h4 class="modal-title" id="myModalLabel">Plane Configuration - Model {{AircraftModel}}</h4>
             </div>
             <div class="modal-body">
-                <iframe src="views/plan.html"></iframe>
+                <img src="images/airplan/airplan{{AircraftModel}}.png" alt="Model {{AircraftModel}}" />
             </div>
         </div>
     </div>

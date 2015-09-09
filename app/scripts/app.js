@@ -60,9 +60,10 @@ function randomString(length, chars) {
     return result;
 }
 
-var lookupURL = "http://cms.365cloudservices.com/api/offline/lookup";
-//var lookupURL = "feed/lookup.txt"; //TODO:live one is not working somehow, need to fix
+//var lookupURL = "http://cms.365cloudservices.com/api/offline/lookup";
+var lookupURL = "http://cmsapi.cocodemo.com/api/lookups";
 var localJsonVersion = getLocalStorage("JsonVersion"); //local time stamp
+var passcode = "7678";
 
 
 //function check local storage
@@ -105,7 +106,6 @@ function writeLookUpToLocal(url){
 function compareJsonVersion(url){
     $.getJSON(url, function(data) {
         var liveJsonVersion = JSON.stringify(data.JsonVersion);
-        console.log("local: " + localJsonVersion + "; live: "+ liveJsonVersion);
         if(localJsonVersion != liveJsonVersion){
             //JSON been updated, local data need to be updated
             writeLookUpToLocal(lookupURL);

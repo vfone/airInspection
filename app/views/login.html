@@ -1,5 +1,27 @@
 <div id="login">
-    <div class="login_form">
+    <div class="passcode_form" ng-hide="isPasscodeVerified">
+      <h1>Your 4-digits passcode</h1>
+      <form class="form-inline">
+        <div class="form-group">
+          <input type="number" ng-keyup="verifyPasscode(0)" ng-model="passcode1" class="form-control passcode_input" id="passcode1" maxlength="1" />
+        </div>
+        <div class="form-group">
+          <input type="number" ng-keyup="verifyPasscode(1)" ng-model="passcode2" class="form-control passcode_input" id="passcode2" maxlength="1" />
+        </div>
+        <div class="form-group">
+          <input type="number" ng-keyup="verifyPasscode(2)" ng-model="passcode3" class="form-control passcode_input" id="passcode3" maxlength="1" />
+        </div>
+        <div class="form-group">
+          <input type="number" ng-keyup="verifyPasscode(3)" ng-model="passcode4" class="form-control passcode_input" id="passcode4" maxlength="1" />
+        </div>
+        <button class="btn btn-success">Sign in</button>
+      </form>
+      <div class="alert alert-danger" role="alert" ng-show="isPasscodeWrong">
+        <strong>Oh snap!</strong> Passcode seems wrong and try submitting again.
+      </div>
+    </div>
+
+    <div class="login_form" ng-show="isPasscodeVerified">
         <h1><i class="fa fa-paper-plane-o"></i> welcome on board </h1>
         <div class="login_box" >
             <div class="input">
@@ -19,7 +41,7 @@
             </a>
         </div>
     </div>
-    <div class="report_dock">
+    <div class="report_dock" ng-show="isPasscodeVerified">
         <h2>Hoooray! All reports been submitted successfully! </h2>
         <div class="pending" ng-repeat="pendingreport in pendingreports" id={{pendingreport.ReportID}} ng-click="goSummary(pendingreport.ReportID)">
             <i class="fa fa-file-text-o"></i><span class="regno"><i class="fa fa-plane"></i> {{pendingreport.RegNo}}</span><span class="surveyor"><i class="fa fa-user"></i> {{pendingreport.Surveyor}}</span>
