@@ -63,7 +63,10 @@ function randomString(length, chars) {
 //var lookupURL = "http://cms.365cloudservices.com/api/offline/lookup";
 var lookupURL = "http://cmsapi.cocodemo.com/api/lookups";
 var localJsonVersion = getLocalStorage("JsonVersion"); //local time stamp
+var authURL = "http://cmsapi.cocodemo.com/token";
+var postURL = "http://cmsapi.cocodemo.com/api/surveys";
 var passcode = "7678";
+var authcode = "1234567890";
 
 
 //function check local storage

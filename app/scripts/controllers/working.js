@@ -40,7 +40,6 @@ angular.module('airInspectionApp')
             for (var i = 0; i < items.length; i++) {
                 var item = items[i];
                 if (item.ItemTypeId == this.ItemTypeId) {
-                  console.log(item);
                     filtered.push(item);
                 }
             }
@@ -73,7 +72,16 @@ angular.module('airInspectionApp')
         $(".surveyor_info h4").html( $scope.$parent.global_surveyor);
         $scope.todayDate = getTodayDate();
         //detect and write connection status
-        if(navigator.onLine){
+
+        var fakeNavigator = {};
+        for (var i in navigator) {
+          fakeNavigator[i] = navigator[i];
+        }
+        fakeNavigator.onLine = true;
+        navigator = fakeNavigator;
+        $scope.isOnline = window.navigator.onLine;
+
+        if($scope.isOnline){
             $scope.connetionState = [{
                     status: 'online',
                     message: 'connected'
@@ -87,7 +95,6 @@ angular.module('airInspectionApp')
         }
     }
 
-
     //assign scope
     $scope.locations = JSON.parse(getLocalStorage('Locations'));
     $scope.zones = JSON.parse(getLocalStorage('Zones'));
@@ -95,8 +102,8 @@ angular.module('airInspectionApp')
     $scope.categoriesItemTypes = JSON.parse(getLocalStorage('CategoriesItemTypes'));
     //$scope.itemTypes = JSON.parse(getLocalStorage('ItemTypes'));
     $scope.items = JSON.parse(getLocalStorage('Items'));
-    //$scope.conditions = JSON.parse(getLocalStorage('Conditions'));
-    //$scope.actions = JSON.parse(getLocalStorage('Actions'));
+    $scope.conditions = JSON.parse(getLocalStorage('Conditions'));
+    $scope.actions = JSON.parse(getLocalStorage('Actions'));
     $scope.seatLetters = [
             {"Letter":"A"},
             {"Letter":"B"},
@@ -214,7 +221,6 @@ angular.module('airInspectionApp')
     $scope.categoryID = '';
     $scope.categoryName = '';
     $scope.ItemTypeId = '';
-    //TODO: check if need to generate group buttons for condition, action, etc from JSON data. For now they are static
 
     $scope.populateDropDowns = function(cateID, cateNme, cateDisplaySeat){
         $(".active").removeClass("active");
@@ -321,7 +327,7 @@ angular.module('airInspectionApp')
         return today;
     };
 
-$scope.saveRecord = function(){
+    $scope.saveRecord = function(){
     var flag = true;
     //validation
     if($scope.categoryName == "")
@@ -377,28 +383,75 @@ $scope.saveRecord = function(){
         $(".record-panel ul").append(html);
         var seatL = '';
         var seatN = '';
-        if($scope.mySeatLetter != undefined){
+        console.log($scope.mySeatLetter);
+        console.log($scope.mySeatNumber);
+
+        if(typeof $scope.mySeatLetter.Letter != 'undefined'){
             seatL = $scope.mySeatLetter.Letter;
         }
-        if($scope.mySeatNumber != undefined){
+        if(typeof $scope.mySeatNumber.Number != 'undefined'){
             seatN = $scope.mySeatNumber.Number;
         }
+      console.log(seatL);
+      console.log(seatN);
 
         //check if any report been created for this session, otherwise create one and start inserting record into it
       //console.log(getLocalStorage(this.$parent.global_ReportID));
 
       if(getLocalStorage(this.$parent.global_ReportID) == null){
             //no report created, create one
-            var record = '{"AuthKey":"CT12345678","RegNo": "' + $scope.regno + '", "AircraftId": "' + $scope.$parent.global_aircraftId + '", "Surveyor": "' + $scope.surveyor + '", "SurveyorId": "' + $scope.$parent.global_surveyorId + '",';
-            record+='"Records":[';
-            record +='{"CategoryName":"' + $scope.categoryName + '", "ZoneName":"", "ZoneID":"999999", "SeatNo":"' + seatL+''+seatN + '", "Code":"'+ $scope.myLocation.Code + '", "LocationId":"'+ $scope.myLocation.LocationId + '", "ItemType":"'+ $scope.myItem.ItemTypeDescription + '","ItemTypeId":"'+ $scope.myItem.ItemTypeId + '", "ItemDescription":"'+ $scope.myDescription.ItemDescription + '", "ItemId":"'+ $scope.myDescription.ItemId + '", "Comment":"'+ $scope.myComment + '", "Condition":"'+ $scope.checkRadioText('#radio_condition') +  '","ConditionId":"'+ $scope.checkRadioValue('#radio_condition') +  '", "Action":"'+ $scope.checkRadioText('#radio_action') + '","ActionId":"'+ $scope.checkRadioValue('#radio_action') +  '", "AirworthinessDefect":"'+ $scope.checkRadioText('#radio_airworthy') +'"}';
-            record += ']}';
+            var record = '{"RegNo": "' + $scope.regno + '",';
+            record += ' "AircraftId": "' + $scope.$parent.global_aircraftId + '",';
+            record += ' "AircraftTypeId": "' + $scope.$parent.global_aircraftTypeId + '",';
+            record += '"SurveyorId": "' + $scope.$parent.global_surveyorId + '",';
+            record += ' "Surveyor": "' + $scope.surveyor + '",';
+            record += '"Records":[{';
+            record += '"LocationId": "' + $scope.myLocation.LocationId + '",';
+            record += '"Code":"'+ $scope.myLocation.Code + '",';
+            record += '"SeatRow": "' + seatL + '",';
+            record += '"SeatNo": "' +seatN + '",';
+            record += '"CategoryID": "' + $scope.categoryID + '",';
+            record += '"CategoryName":"' + $scope.categoryName + '",';
+            record += '"ItemTypeID":"'+ $scope.myItem.ItemTypeId + '",';
+            record += '"ItemType":"'+ $scope.myItem.ItemTypeDescription + '",';
+            record += '"ItemID":"'+ $scope.myDescription.ItemId + '",';
+            record += '"ItemDescription":"'+ $scope.myDescription.ItemDescription + '",';
+            record += '"ConditionID":"'+$scope.checkRadioValue('#radio_condition')+'",';
+            record += '"Condition":"'+ $scope.checkRadioText('#radio_condition') +'",';
+            record += '"AirworthinessDefect":"'+$scope.checkRadioText('#radio_airworthy')+'",';
+            record += '"ActionID":"'+$scope.checkRadioValue('#radio_action')+'",';
+            record += '"Action":"'+ $scope.checkRadioText('#radio_action') + '",';
+            record += '"Comment":"'+$scope.myComment+'"';
+            record += '}],';
+            record += '"CreatedDate":"'+new Date().toISOString()+'",';
+            record += '"SubmittedBy":"",';
+            record += '"Status":"A"}';
+
+
             setLocalStorage(this.$parent.global_ReportID, record);
         }else{
             //TODO:get record insert in JSON
             var feed = JSON.parse(getLocalStorage(this.$parent.global_ReportID));
+            var record ='{';
+            record += '"LocationId": "' + $scope.myLocation.LocationId + '",';
+            record += '"Code":"'+ $scope.myLocation.Code + '",';
+            record += '"SeatRow": "' + seatL + '",';
+            record += '"SeatNo": "' +seatN + '",';
+            record += '"CategoryID": "' + $scope.categoryID + '",';
+            record += '"CategoryName":"' + $scope.categoryName + '",';
+            record += '"ItemTypeID":"'+ $scope.myItem.ItemTypeId + '",';
+            record += '"ItemType":"'+ $scope.myItem.ItemTypeDescription + '",';
+            record += '"ItemID":"'+ $scope.myDescription.ItemId + '",';
+            record += '"ItemDescription":"'+ $scope.myDescription.ItemDescription + '",';
+            record += '"ConditionID":"'+$scope.checkRadioValue('#radio_condition')+'",';
+            record += '"Condition":"'+ $scope.checkRadioText('#radio_condition') +'",';
+            record += '"AirworthinessDefect":"'+$scope.checkRadioText('#radio_airworthy')+'",';
+            record += '"ActionID":"'+$scope.checkRadioValue('#radio_action')+'",';
+            record += '"Action":"'+ $scope.checkRadioText('#radio_action') + '",';
+            record += '"Comment":"'+$scope.myComment+'"';
+            record += '}';
 
-            var record ='{"CategoryName":"' + $scope.categoryName + '", "ZoneName":"", "ZoneID":"999999", "SeatNo":"' + seatL+''+seatN + '", "Code":"'+ $scope.myLocation.Code + '", "LocationId":"'+ $scope.myLocation.LocationId + '", "ItemType":"'+ $scope.myItem.ItemTypeDescription + '","ItemTypeId":"'+ $scope.myItem.ItemTypeId + '", "ItemDescription":"'+ $scope.myDescription.ItemDescription + '", "ItemId":"'+ $scope.myDescription.ItemId + '", "Comment":"'+ $scope.myComment + '", "Condition":"'+ $scope.checkRadioText('#radio_condition') +  '","ConditionId":"'+ $scope.checkRadioValue('#radio_condition') +  '", "Action":"'+ $scope.checkRadioText('#radio_action') + '","ActionId":"'+ $scope.checkRadioValue('#radio_action') +  '", "AirworthinessDefect":"'+ $scope.checkRadioText('#radio_airworthy') +'"}';
+            //var record ='{"CategoryName":"' + $scope.categoryName + '", "ZoneName":"", "ZoneID":"999999", "SeatNo":"' + seatL+''+seatN + '", "Code":"'+ $scope.myLocation.Code + '", "LocationId":"'+ $scope.myLocation.LocationId + '", "ItemType":"'+ $scope.myItem.ItemTypeDescription + '","ItemTypeId":"'+ $scope.myItem.ItemTypeId + '", "ItemDescription":"'+ $scope.myDescription.ItemDescription + '", "ItemId":"'+ $scope.myDescription.ItemId + '", "Comment":"'+ $scope.myComment + '", "Condition":"'+ $scope.checkRadioText('#radio_condition') +  '","ConditionId":"'+ $scope.checkRadioValue('#radio_condition') +  '", "Action":"'+ $scope.checkRadioText('#radio_action') + '","ActionId":"'+ $scope.checkRadioValue('#radio_action') +  '", "AirworthinessDefect":"'+ $scope.checkRadioText('#radio_airworthy') +'"}';
 
             feed['Records'].push(JSON.parse(record));
             setLocalStorage(this.$parent.global_ReportID, JSON.stringify(feed));
@@ -413,8 +466,8 @@ $scope.saveRecord = function(){
         $scope.myDescription = "999999";
         $('input:checked').prop('checked',false);
         $('#defaultAirworth').prop('checked', true);
-        $scope.mySeatLetter= "999999";
-        $scope.mySeatNumber = "999999";
+        $scope.mySeatLetter= "";
+        $scope.mySeatNumber = "";
         $scope.myComment = "";
     }
 };

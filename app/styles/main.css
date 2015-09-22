@@ -78,6 +78,16 @@ html, body {
     outline: 0px;
 }
 
+.formModal .form-login{
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.formModal .form-login h3{
+  margin: 0 0 10px 0;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */
@@ -344,8 +354,8 @@ html, body {
         padding: 20px 10px 0px 20px;
         border-top:1px solid #ffffff;
         border-bottom: 1px solid #ffffff;
-        height: 400px;
-        max-height: 400px;
+        height: 350px;
+        max-height: 350px;
         overflow-y: auto;
     }
     #working .category ul, #summary .pendingreport ul{
@@ -457,7 +467,7 @@ html, body {
 
     #working .report_control, #summary .report_control{
       bottom: 0px;
-      height: 100px;
+      height: 150px;
       width:100%;
       padding: 20px 10px 10px 20px;
       position: absolute;

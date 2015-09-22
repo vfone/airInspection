@@ -45,11 +45,11 @@
                         </div>
                         <div class="col-sm-8">
                             <label><i class="fa fa-ticket" ></i> Seat No.</label><br/>
-                            <select ng-model="mySeatLetter" ng-disabled="!displaySeat" id="ddl_seatletter"   style="min-width: 50px; width: 100px;" class="nya-selectpicker-out" ng-options="seatLetter.Letter for seatLetter in seatLetters track by seatLetter.Letter">
+                            <select ng-model="mySeatLetter" ng-disabled="!displaySeat" ng-init="mySeatLetter = ''" id="ddl_seatletter"   style="min-width: 50px; width: 100px;" class="nya-selectpicker-out" ng-options="seatLetter.Letter for seatLetter in seatLetters track by seatLetter.Letter">
                                 <option value="">-- Row --</option>
                             </select>
 
-                            <select ng-model="mySeatNumber" ng-disabled="!displaySeat" id="ddl_seatnumber"  style="min-width: 50px; width: 100px;" class="nya-selectpicker-out" ng-options="seatNumber.Number for seatNumber in seatNumbers track by seatNumber.Number">
+                            <select ng-model="mySeatNumber" ng-disabled="!displaySeat" ng-init="mySeatNumber = ''" id="ddl_seatnumber"  style="min-width: 50px; width: 100px;" class="nya-selectpicker-out" ng-options="seatNumber.Number for seatNumber in seatNumbers track by seatNumber.Number">
                                 <option value="">-- No. --</option>
                             </select>
                             <!--input class="formstyle" id="txt_seatno" placeholder="please enter seat no. here" ng-model="mySeatNo" ng-init="mySeatNo=''"></input-->
@@ -82,8 +82,7 @@
                             <div class="group">
                                 <label><i class="fa fa-flag" ></i> Condition</label>
                                 <div class="btn-group radio-group" id="radio_condition" >
-                                    <label><input type="radio" name="condition" value="1"><span>Minor</span></label>
-                                    <label><input type="radio" name="condition" value="2"><span>Major</span></label>
+                                    <label ng-repeat="condition in conditions"><input type="radio" name="condition" value={{condition.ConditionId}}><span>{{condition.ConditionName}}</span></label>
                                 </div>
                             </div>
                             </div>
@@ -91,9 +90,9 @@
                                 <div class="group">
                                     <label><i class="fa fa-bell-o" ></i> Action</label>
                                     <div class="btn-group radio-group" id="radio_action" ng-model="myAction">
-                                        <label><input type="radio" name="action"  value="1"><span>Adjust</span></label>
-                                        <label><input type="radio" name="action"  value="2"><span>Repair</span></label>
-                                        <label><input type="radio" name="action"  value="3"><span>Replace</span></label>
+                                      <label ng-repeat="action in actions">
+                                        <input type="radio" name="action" value={{action.ActionId}}><span>{{action.ActionName}}</span>
+                                      </label>
                                     </div>
                                 </div>
                             </div>
@@ -101,8 +100,8 @@
                                 <div class="group">
                                 <label><i class="fa  fa-exclamation-triangle" ></i> Airworthiness Defect</label>
                                 <div class="btn-group radio-group" id="radio_airworthy" ng-model="myAirworthy">
-                                    <label><input type="radio" name="airworthy"><span>Yes</span></label>
-                                    <label><input type="radio" name="airworthy" id="defaultAirworth" checked><span>No</span></label>
+                                    <label><input type="radio" name="airworthy" value="Yes"><span>Yes</span></label>
+                                    <label><input type="radio" name="airworthy" id="defaultAirworth" value="No" checked><span>No</span></label>
                                 </div>
                                 </div>
                             </div>
