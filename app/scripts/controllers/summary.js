@@ -65,7 +65,7 @@ angular.module('airInspectionApp')
             }
         }
         $scope.pendingreports = arrPendingReports;
-
+        $scope.hasReport = ($scope.pendingreports).length > 0;
 
 
         var urlOrigin = $routeParams.origin;
@@ -214,6 +214,7 @@ angular.module('airInspectionApp')
                     }
                 }
                 $scope.pendingreports = arrPendingReports;
+                $scope.hasReport = ($scope.pendingreports).length > 0;
                 $scope.reportData = '';
                 $scope.submitRptID = '';
                 $('#errorModal').modal();
@@ -237,6 +238,7 @@ angular.module('airInspectionApp')
                     }
                 }
                 $scope.pendingreports = arrPendingReports;
+                $scope.hasReport = ($scope.pendingreports).length > 0;
                 $scope.reportData = '';
                 $scope.submitRptID = '';
             }
@@ -287,6 +289,7 @@ angular.module('airInspectionApp')
                 }
               }
               $scope.pendingreports = arrPendingReports;
+              $scope.hasReport = ($scope.pendingreports).length > 0;
               $scope.submitRptID = '';
               $('#errorModal').modal();
             }
@@ -328,6 +331,7 @@ angular.module('airInspectionApp')
                     }
                   }
                   $scope.pendingreports = arrPendingReports;
+                  $scope.hasReport = ($scope.pendingreports).length > 0;
                   $scope.submitRptID = '';
                   $(".record-panel ul").html('');
                   $scope.posting = false;
@@ -394,6 +398,7 @@ angular.module('airInspectionApp')
                 }
               }
               $scope.pendingreports = arrPendingReports;
+              $scope.hasReport = ($scope.pendingreports).length > 0;
               $scope.submitRptID = '';
               $('#errorModal').modal();
             }
@@ -406,9 +411,6 @@ angular.module('airInspectionApp')
                   //submit here
                   var dataObj = JSON.parse(getLocalStorage($scope.submitRptID));
                   dataObj.SubmittedBy = $scope.loggedinName;
-                  console.log(getLocalStorage($scope.submitRptID));
-                  console.log(dataObj);
-                  console.log(JSON.stringify(dataObj));
                   var res = $http({
                     method: 'POST',
                     url: postURL,
@@ -422,7 +424,7 @@ angular.module('airInspectionApp')
                     console.log(data);
 
                     //once successful, remove report from local storage and re-populate side nav
-                    //removeLocalStorage($scope.submitRptID);
+                    removeLocalStorage($scope.submitRptID);
                     //******** populate side nav
                     arrPendingReports = [];
                     //get list of pending report
@@ -438,6 +440,7 @@ angular.module('airInspectionApp')
                       }
                     }
                     $scope.pendingreports = arrPendingReports;
+                    $scope.hasReport = ($scope.pendingreports).length > 0;
                     $scope.submitRptID = '';
                     $(".record-panel ul").html('');
                     $scope.posting = false;

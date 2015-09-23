@@ -383,8 +383,6 @@ angular.module('airInspectionApp')
         $(".record-panel ul").append(html);
         var seatL = '';
         var seatN = '';
-        console.log($scope.mySeatLetter);
-        console.log($scope.mySeatNumber);
 
         if(typeof $scope.mySeatLetter.Letter != 'undefined'){
             seatL = $scope.mySeatLetter.Letter;
@@ -392,8 +390,6 @@ angular.module('airInspectionApp')
         if(typeof $scope.mySeatNumber.Number != 'undefined'){
             seatN = $scope.mySeatNumber.Number;
         }
-      console.log(seatL);
-      console.log(seatN);
 
         //check if any report been created for this session, otherwise create one and start inserting record into it
       //console.log(getLocalStorage(this.$parent.global_ReportID));

@@ -23,9 +23,9 @@
             </div>
             <div class="report_control col-sm-12">
                 <div class="button grey" id="btn_back" data-toggle="modal" data-target="#logoutModal">Logout</div>
-                <div class="button red" id="btn_delete" data-toggle="modal" data-target="#deleteModal">Delete</div>
-                <div class="button green" id="btn_submit" data-toggle="modal" data-target="#submitModal" ng-show="isOnline"><i class="fa fa-spinner loading" ng-show="posting"></i> Submit</div>
-                <div class="button green" id="btn_submitall" data-toggle="modal" data-target="#submitAllModal" ng-show="isOnline"><i class="fa fa-spinner loading" ng-show="posting"></i> Submit All</div>
+                <div class="button red" id="btn_delete" data-toggle="modal" data-target="#deleteModal" ng-show="hasReport">Delete</div>
+                <div class="button green" id="btn_submit" data-toggle="modal" data-target="#submitModal" ng-show="isOnline&&hasReport"><i class="fa fa-spinner loading" ng-show="posting"></i> Submit</div>
+                <div class="button green" id="btn_submitall" data-toggle="modal" data-target="#submitAllModal" ng-show="isOnline&&hasReport"><i class="fa fa-spinner loading" ng-show="posting"></i> Submit All</div>
                 <div class="button blue" id="btn_save" data-toggle="modal" data-target="#saveModal" ng-hide="isOnline">Save</div>
             </div>
         </div>
