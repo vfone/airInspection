@@ -27,12 +27,12 @@ angular.module('airInspectionApp')
         //detect if _surveyor and _regno both assigned value
         $scope.todayDate = getTodayDate();
         //detect and write connection status
-          var fakeNavigator = {};
-          for (var i in navigator) {
-            fakeNavigator[i] = navigator[i];
-          }
-          fakeNavigator.onLine = true;
-          navigator = fakeNavigator;
+        //  var fakeNavigator = {};
+        //  for (var i in navigator) {
+        //    fakeNavigator[i] = navigator[i];
+        //  }
+        //  fakeNavigator.onLine = true;
+        //  navigator = fakeNavigator;
           $scope.isOnline = window.navigator.onLine;
         if($scope.isOnline){
             $scope.connetionState = [{
@@ -48,6 +48,7 @@ angular.module('airInspectionApp')
         }
 
         $scope.cfdump = "";
+    $scope.posting = false;
         //******** populate side nav
         var arrPendingReports = [];
         //get list of pending report
@@ -179,7 +180,16 @@ angular.module('airInspectionApp')
             return today;
         };
         ;
-
+        //new report
+        $scope.newReport = function(){
+          $scope.$parent.global_surveyor = '';
+          $scope.$parent.global_regno = '';
+          $scope.$parent.global_surveyorId = '';
+          $scope.$parent.global_aircraftId = '';
+          $scope.$parent.global_aircraftTypeId = '';
+          window.location.href="#";
+          $rootScope.global_ReportID = "report_"+randomString(6,"*");
+        };
         //logout
         $scope.logoutIt = function() {
             //logout, reset all global variable and go back to home

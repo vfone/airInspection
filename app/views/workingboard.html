@@ -81,7 +81,7 @@
                             <div class="float">
                             <div class="group">
                                 <label><i class="fa fa-flag" ></i> Condition</label>
-                                <div class="btn-group radio-group" id="radio_condition" >
+                                <div class="btn-group radio-group" id="radio_condition"  ng-model="myCondition">
                                     <label ng-repeat="condition in conditions"><input type="radio" name="condition" value={{condition.ConditionId}}><span>{{condition.ConditionName}}</span></label>
                                 </div>
                             </div>

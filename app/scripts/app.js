@@ -132,3 +132,12 @@ function removeLocalStorage(k){
 function clearLocalStorage(){
     localStorage.clear();
 }
+function setSessionStorage(k,v){
+  sessionStorage.setItem(k, v);
+}
+function getSessionStorage(k){
+  return sessionStorage.getItem(k);
+}
+function removeSessionStorage(k){
+  sessionStorage.removeItem(k);
+}

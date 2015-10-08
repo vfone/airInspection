@@ -22,6 +22,7 @@
                 </ul>
             </div>
             <div class="report_control col-sm-12">
+                <div class="button green" id="btn_new" data-toggle="modal" data-target="#newModal" >New Report</div>
                 <div class="button grey" id="btn_back" data-toggle="modal" data-target="#logoutModal">Logout</div>
                 <div class="button red" id="btn_delete" data-toggle="modal" data-target="#deleteModal" ng-show="hasReport">Delete</div>
                 <div class="button green" id="btn_submit" data-toggle="modal" data-target="#submitModal" ng-show="isOnline&&hasReport"><i class="fa fa-spinner loading" ng-show="posting"></i> Submit</div>
@@ -35,7 +36,8 @@
                     <ul>
                         <li ng-repeat="rpt in reportData" >
                         <span class='square'>{{rpt.CategoryName | limitTo:2 | uppercase}}</span><span class='localtion'>{{rpt.Code}}</span><span class='itemdesc'>{{rpt.ItemDescription}}</span>
-                        <span class='condition {{rpt.Condition}}'>{{rpt.Condition}}</span><span class='action {{rpt.Action}}'>{{rpt.Action}}</span><span class='square {{rpt.AirworthinessDefect}}Airworthy'>{{rpt.AirworthinessDefect | limitTo:1}}</span>
+                        <span class='condition {{rpt.Condition}}'>{{rpt.Condition}}</span><span class='action {{rpt.Action}}'>{{rpt.Action}}</span><span class='{{rpt.AirworthinessDefect}}Airworthy'>{{rpt.AirworthinessDefect | limitTo:1}}</span>
+                          <span class='comment'><strong>Comment: </strong>{{rpt.Comment}}</span>
                         </li>
                     </ul>
                 </div>
@@ -43,8 +45,26 @@
         </div>
     </div>
 </div>
-
+<!-- Submitting-->
+<div id="submit-shadow" ng-show="posting"><i class="fa fa-spinner fa-pulse loading"></i></div>
 <!-- Modal -->
+<div class="modal fade bs-example-modal-sm" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background: #5ac65f;">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel" style="color: #ffffff; text-shadow:none">New Report</h4>
+      </div>
+      <div class="modal-body">
+        Do you want to creat a new report?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="newReport()">Yes, please</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="modal fade bs-example-modal-sm" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -72,7 +92,7 @@
                 <h4 class="modal-title" id="myModalLabel" style="color: #ffffff; text-shadow:none">Delete this report?</h4>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete report <span class="highlight">{{submitRptID}}</span>?
+                Are you sure you want to delete report <span class="highlight">{{submitRptID}}</span> for <span class="highlight">{{regno}}</span>?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

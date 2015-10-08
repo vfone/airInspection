@@ -73,12 +73,12 @@ angular.module('airInspectionApp')
         $scope.todayDate = getTodayDate();
         //detect and write connection status
 
-        var fakeNavigator = {};
-        for (var i in navigator) {
-          fakeNavigator[i] = navigator[i];
-        }
-        fakeNavigator.onLine = true;
-        navigator = fakeNavigator;
+       //var fakeNavigator = {};
+       // for (var i in navigator) {
+       //   fakeNavigator[i] = navigator[i];
+       // }
+       // fakeNavigator.onLine = true;
+       // navigator = fakeNavigator;
         $scope.isOnline = window.navigator.onLine;
 
         if($scope.isOnline){
@@ -223,8 +223,16 @@ angular.module('airInspectionApp')
     $scope.ItemTypeId = '';
 
     $scope.populateDropDowns = function(cateID, cateNme, cateDisplaySeat){
+        //reset form
         $(".active").removeClass("active");
         $("#category-"+ cateID).addClass("active");
+        $scope.mySeatLetter = '';
+        $scope.mySeatNumber = '';
+        $scope.myComment = '';
+        $("#radio_condition input:checked").attr('checked', false);
+        $("#radio_action input:checked").attr('checked', false);
+        $("#radio_airworthy input:checked").attr('checked', false);
+
         $scope.categoryID = cateID;
         $scope.categoryName = cateNme;
         $scope.displaySeat = cateDisplaySeat;
@@ -236,14 +244,6 @@ angular.module('airInspectionApp')
                 return false;
             }
         });
-        //if($scope.categoryName == 'Monument' || $scope.categoryName == 'Galley'){
-        //  $scope.isGreyOut = true;
-        //}
-        //else{
-        //  $scope.isGreyOut = false;
-        //}
-
-        //$scope.$apply();
     }
     $scope.populateItemDescription = function(itemTypeID){
         $scope.ItemTypeId = itemTypeID;
@@ -377,8 +377,10 @@ angular.module('airInspectionApp')
         var li_len = $(".record-panel ul li").length;
         var html = "<li class='"+$scope.checkRadioText("#radio_airworthy")+"Airworthy' id='rec-"+li_len+"'>";
          html += "<span class='square'>"+ $scope.categoryName.substring(0, 2).toUpperCase() +"</span><span class='localtion'>"+$scope.myLocation.Code+"</span><span class='itemdesc'>"+$scope.myDescription.ItemDescription+"</span>";
-         html += "<span class='condition "+$scope.checkRadioText("#radio_condition")+"'>"+$scope.checkRadioText("#radio_condition")+"</span><span class='action "+$scope.checkRadioText("#radio_action")+"'>"+$scope.checkRadioText("#radio_action")+"</span><span class='square "+$scope.checkRadioText("#radio_airworthy")+"Airworthy'>"+ $scope.checkRadioText("#radio_airworthy").substring(0, 1).toUpperCase() +"</span>";
-         html += "<span class='close openDeleteModal' data-toggle='modal' data-target='#deleteModal' data-id='rec-"+li_len+"'><i class='fa fa-times-circle'></i></span></li>";
+         html += "<span class='condition "+$scope.checkRadioText("#radio_condition")+"'>"+$scope.checkRadioText("#radio_condition")+"</span><span class='action "+$scope.checkRadioText("#radio_action")+"'>"+$scope.checkRadioText("#radio_action")+"</span><span class='"+$scope.checkRadioText("#radio_airworthy")+"Airworthy'>"+ $scope.checkRadioText("#radio_airworthy").substring(0, 1).toUpperCase() +"</span>";
+         html += "<span class='close openDeleteModal' data-toggle='modal' data-target='#deleteModal' data-id='rec-"+li_len+"'><i class='fa fa-times-circle'></i></span>";
+         html += "<span class='comment'><strong>Comment: </strong>"+$scope.myComment+"</span>";
+         html += "</li>";
 
         $(".record-panel ul").append(html);
         var seatL = '';

@@ -1,17 +1,21 @@
 CACHE MANIFEST
-# 2015-09-10:v1
+# 2015-10-08:v2
 
 # Explicitly cached entries
+*
 index.html
 views/login.html
 views/plan.html
 views/workingboard.html
 views/summaryboard.html
+scripts/
 scripts/vendor.53b9975e.js
 scripts/oldieshim.d41d8cd9.js
-scripts/scripts.d6743fff.js
+scripts/scripts.f683f85e.js
+styles/
 styles/vendor.bd233937.css
-styles/main.dd5beac2.css
+styles/main.4fe3dff3.css
+images/
 images/favicon.518f7b60.png
 images/logo57x57.02719373.png
 images/logo72x72.6e1bd639.png

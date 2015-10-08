@@ -1,20 +1,19 @@
 <div id="login">
     <div class="passcode_form" ng-hide="isPasscodeVerified">
-      <h1>Your 4-digits passcode</h1>
+      <h1>Please enter your pass code</h1>
       <form class="form-inline">
         <div class="form-group">
-          <input type="number" ng-keyup="verifyPasscode(0)" ng-model="passcode1" class="form-control passcode_input" id="passcode1" maxlength="1" />
+          <input type="tel" ng-keyup="verifyPasscode()" ng-model="passcode" class="form-control passcode_input" id="passcode1" maxlength="4" />
         </div>
-        <div class="form-group">
-          <input type="number" ng-keyup="verifyPasscode(1)" ng-model="passcode2" class="form-control passcode_input" id="passcode2" maxlength="1" />
-        </div>
-        <div class="form-group">
-          <input type="number" ng-keyup="verifyPasscode(2)" ng-model="passcode3" class="form-control passcode_input" id="passcode3" maxlength="1" />
-        </div>
-        <div class="form-group">
-          <input type="number" ng-keyup="verifyPasscode(3)" ng-model="passcode4" class="form-control passcode_input" id="passcode4" maxlength="1" />
-        </div>
-        <button class="btn btn-success">Sign in</button>
+        <!--<div class="form-group">-->
+          <!--<input type="tel" ng-keyup="verifyPasscode(1)" ng-model="passcode2" class="form-control passcode_input" id="passcode2" maxlength="1" size="1" min="0" max="9" pattern="[0-9]*" />-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+          <!--<input type="tel" ng-keyup="verifyPasscode(2)" ng-model="passcode3" class="form-control passcode_input" id="passcode3" maxlength="1" size="1" min="0" max="9" pattern="[0-9]*" />-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+          <!--<input type="tel" ng-keyup="verifyPasscode(3)" ng-model="passcode4" class="form-control passcode_input" id="passcode4" maxlength="1" size="1" min="0" max="9" pattern="[0-9]*" />-->
+        <!--</div>-->
       </form>
       <div class="alert alert-danger" role="alert" ng-show="isPasscodeWrong">
         <strong>Oh snap!</strong> Passcode seems wrong and try submitting again.
