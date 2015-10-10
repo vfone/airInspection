@@ -59,7 +59,7 @@ angular.module('airInspectionApp')
   .controller('WorkingCtrl', function ($scope) {
     //detect if _surveyor and _regno both assigned value
     if($scope.$parent.global_surveyor =="" || $scope.$parent.global_surveyor == undefined || $scope.$parent.global_surveyor == null || $scope.$parent.global_regno=="" || $scope.$parent.global_regno== undefined || $scope.$parent.global_regno==null){
-        console.log("No global surveyor or regno found!");
+        //console.log("No global surveyor or regno found!");
         window.location.href = "#";
     }
     else{

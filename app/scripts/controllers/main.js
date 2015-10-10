@@ -121,7 +121,7 @@ angular.module('airInspectionApp')
         for(var key in localStorage) {
 
             if((/^report_/).test(key)){
-              console.log(key);
+              //console.log(key);
                 //this is a pending report
                 //get RegNo base on report id
                 var obj = JSON.parse(getLocalStorage(key));

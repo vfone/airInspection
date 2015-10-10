@@ -179,7 +179,7 @@ angular.module('airInspectionApp')
             today = dd+'-'+MM+'-'+yyyy + ' | '+ DAY;
             return today;
         };
-        ;
+
         //new report
         $scope.newReport = function(){
           $scope.$parent.global_surveyor = '';
@@ -189,6 +189,7 @@ angular.module('airInspectionApp')
           $scope.$parent.global_aircraftTypeId = '';
           window.location.href="#";
           $rootScope.global_ReportID = "report_"+randomString(6,"*");
+          $('.modal-backdrop').remove();
         };
         //logout
         $scope.logoutIt = function() {
@@ -310,7 +311,7 @@ angular.module('airInspectionApp')
                 //submit here
                 var dataObj = JSON.parse(getLocalStorage($scope.submitRptID));
                 dataObj.SubmittedBy = $scope.loggedinName;
-                console.log(JSON.stringify(dataObj));
+                //console.log(JSON.stringify(dataObj));
                 var res = $http({
                   method: 'POST',
                   url: postURL,
@@ -322,7 +323,7 @@ angular.module('airInspectionApp')
                 });
 
                 res.success(function(data, status, headers, config) {
-                  console.log(data);
+                  //console.log(data);
 
                   //once successful, remove report from local storage and re-populate side nav
                   removeLocalStorage($scope.submitRptID);
@@ -350,8 +351,8 @@ angular.module('airInspectionApp')
 
                 });
                 res.error(function(data, status, headers, config) {
-                  console.log(data);
-                  console.log(status);
+                  //console.log(data);
+                  //console.log(status);
                   $scope.posting = false;
                   $scope.error_message = data.Message;
                   $('#errorModal').modal();
@@ -431,7 +432,7 @@ angular.module('airInspectionApp')
                     }
                   });
                   res.success(function(data, status, headers, config) {
-                    console.log(data);
+                    //console.log(data);
 
                     //once successful, remove report from local storage and re-populate side nav
                     removeLocalStorage($scope.submitRptID);
@@ -459,8 +460,8 @@ angular.module('airInspectionApp')
 
                   });
                   res.error(function(data, status, headers, config) {
-                    console.log(data);
-                    console.log(status);
+                    //console.log(data);
+                    //console.log(status);
                     $scope.posting = false;
                     $scope.error_message = data.Message;
                     $('#errorModal').modal();
