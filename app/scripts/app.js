@@ -95,6 +95,7 @@ function writeLookUpToLocal(url){
         setLocalStorage('Items', JSON.stringify(data.Items));
         setLocalStorage('Conditions', JSON.stringify(data.Conditions));
         setLocalStorage('Actions', JSON.stringify(data.Actions));
+        setLocalStorage('Ports', JSON.stringify(data.Ports));
 
         //override local json version
         setLocalStorage('JsonVersion', JSON.stringify(data.JsonVersion));

@@ -45,12 +45,11 @@
                         </div>
                         <div class="col-sm-8">
                             <label><i class="fa fa-ticket" ></i> Seat No.</label><br/>
-                            <select ng-model="mySeatLetter" ng-disabled="!displaySeat" ng-init="mySeatLetter = ''" id="ddl_seatletter"   style="min-width: 50px; width: 100px;" class="nya-selectpicker-out" ng-options="seatLetter.Letter for seatLetter in seatLetters track by seatLetter.Letter">
-                                <option value="">-- Row --</option>
-                            </select>
-
                             <select ng-model="mySeatNumber" ng-disabled="!displaySeat" ng-init="mySeatNumber = ''" id="ddl_seatnumber"  style="min-width: 50px; width: 100px;" class="nya-selectpicker-out" ng-options="seatNumber.Number for seatNumber in seatNumbers track by seatNumber.Number">
                                 <option value="">-- No. --</option>
+                            </select>
+                            <select ng-model="mySeatLetter" ng-disabled="!displaySeat" ng-init="mySeatLetter = ''" id="ddl_seatletter"   style="min-width: 50px; width: 100px;" class="nya-selectpicker-out" ng-options="seatLetter.Letter for seatLetter in seatLetters track by seatLetter.Letter">
+                              <option value="">-- Row --</option>
                             </select>
                             <!--input class="formstyle" id="txt_seatno" placeholder="please enter seat no. here" ng-model="mySeatNo" ng-init="mySeatNo=''"></input-->
                         </div>
