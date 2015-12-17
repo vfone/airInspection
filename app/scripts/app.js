@@ -40,9 +40,11 @@ var app = angular
 app.run(function ($rootScope) {
     $rootScope.global_surveyor = '';
     $rootScope.global_regno = '';
+    $rootScope.global_port = '';
     $rootScope.global_surveyorId = '';
     $rootScope.global_aircraftId = '';
     $rootScope.global_aircraftTypeId = '';
+    $rootScope.global_portId = '';
     $rootScope.global_ItemTypeId = '';
     $rootScope.global_ReportID = "report_"+randomString(6,"*");
     $rootScope.global_PendingID = '';

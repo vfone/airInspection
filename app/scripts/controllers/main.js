@@ -15,6 +15,7 @@ angular.module('airInspectionApp')
     }
     $scope.surveyors = JSON.parse(getLocalStorage('Surveyors'));
     $scope.aircrafts = JSON.parse(getLocalStorage('Aircrafts'));
+    $scope.portnos = JSON.parse(getLocalStorage('Ports'));
 
     if(sessionStorage.getItem('isPasscodeVerified') != undefined){
       $scope.isPasscodeVerified = sessionStorage.getItem('isPasscodeVerified');
@@ -42,6 +43,15 @@ angular.module('airInspectionApp')
         $scope.$parent.global_aircraftId = val3;
 
         $('#'+el).parents('.input').find(".optionDropdown").slideUp();
+    };
+    $scope.assignToPort = function(el, val, val2){
+      $('#'+el).parents('.input').find('input').val(val);
+      $('#'+el).parents('.input').css("border", "none");
+
+      //assign global aircraftTypeId
+      $scope.$parent.global_portId = val2;
+
+      $('#'+el).parents('.input').find(".optionDropdown").slideUp();
     };
     $scope.assignToSurveyor = function(el, val, val2){
         $('#'+el).parents('.input').find('input').val(val);
@@ -76,9 +86,10 @@ angular.module('airInspectionApp')
     };
     $scope.goToWorking = function(){
         //check if survey and regno been selected
-        if($("#txt_surveyor").val()!= "" && $("#txt_regno").val() != "" && $scope.$parent.global_aircraftTypeId != "" && $scope.$parent.global_surveyorId != ""){
+        if($("#txt_surveyor").val()!= "" && $("#txt_regno").val() != "" && $("#txt_portno").val() != "" && $scope.$parent.global_aircraftTypeId != "" && $scope.$parent.global_surveyorId != "" && $scope.$parent.global_portId != ""){
             $scope.$parent.global_surveyor = $("#txt_surveyor").val();
             $scope.$parent.global_regno = $("#txt_regno").val();
+            $scope.$parent.global_port = $("#txt_portno").val();
 
             window.location.href="#working";
         }
@@ -99,6 +110,14 @@ angular.module('airInspectionApp')
             else{
                 $("#txt_regno").parent(".input").css("border", "none");
             }
+            if($scope.$parent.global_portId == "")
+            {
+              $("#txt_portno").val('');
+              $("#txt_portno").parent(".input").css("border", "1px solid red");
+            }
+            else{
+              $("#txt_portno").parent(".input").css("border", "none");
+            }
             if($("#txt_surveyor").val() == "")
             {
                 $("#txt_surveyor").parent(".input").css("border", "1px solid red");
@@ -113,6 +132,13 @@ angular.module('airInspectionApp')
             else{
                 $("#txt_regno").parent(".input").css("border", "none");
             }
+            if($("#txt_portno").val() == "")
+            {
+              $("#txt_portno").parent(".input").css("border", "1px solid red");
+            }
+            else{
+              $("#txt_portno").parent(".input").css("border", "none");
+            }
         }
     };
     //check if any pending report in local storage
@@ -125,10 +151,11 @@ angular.module('airInspectionApp')
                 //this is a pending report
                 //get RegNo base on report id
                 var obj = JSON.parse(getLocalStorage(key));
-                var regNo = obj['RegNo'].toString();
-                var surveyor = obj['Surveyor'].toString();
+                var regNo = obj['RegNo'].toString()?obj['RegNo'].toString():'';
+                var surveyor = obj['Surveyor'].toString()?obj['Surveyor'].toString():'';
+                var portNo = obj['PortNo'].toString()?obj['PortNo'].toString():'';
 
-                arrPendingReports.push({"ReportID": key, "RegNo": regNo, "Surveyor": surveyor});
+                arrPendingReports.push({"ReportID": key, "RegNo": regNo, "Surveyor": surveyor, "PortNo": portNo});
             }
         }
         $scope.pendingreports = arrPendingReports;

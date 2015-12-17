@@ -58,7 +58,7 @@ angular.module('airInspectionApp')
   })
   .controller('WorkingCtrl', function ($scope) {
     //detect if _surveyor and _regno both assigned value
-    if($scope.$parent.global_surveyor =="" || $scope.$parent.global_surveyor == undefined || $scope.$parent.global_surveyor == null || $scope.$parent.global_regno=="" || $scope.$parent.global_regno== undefined || $scope.$parent.global_regno==null){
+    if($scope.$parent.global_surveyor =="" || $scope.$parent.global_surveyor == undefined || $scope.$parent.global_surveyor == null || $scope.$parent.global_regno=="" || $scope.$parent.global_regno== undefined || $scope.$parent.global_regno==null || $scope.$parent.global_port =="" || $scope.$parent.global_port == undefined || $scope.$parent.global_port == null){
         //console.log("No global surveyor or regno found!");
         window.location.href = "#";
     }
@@ -70,6 +70,8 @@ angular.module('airInspectionApp')
         $scope.surveyor = $scope.$parent.global_surveyor;
 
         $(".surveyor_info h4").html( $scope.$parent.global_surveyor);
+        $scope.portno = $scope.$parent.global_port;
+        $scope.portnoId = $scope.$parent.global_portId;
         $scope.todayDate = getTodayDate();
         //detect and write connection status
 
@@ -397,8 +399,12 @@ angular.module('airInspectionApp')
       //console.log(getLocalStorage(this.$parent.global_ReportID));
 
       if(getLocalStorage(this.$parent.global_ReportID) == null){
+            var nowTime = new Date();
+            var utcTime = new Date(nowTime.getUTCFullYear(), nowTime.getUTCMonth(), nowTime.getDate(), +nowTime.getUTCHours(), nowTime.getUTCMinutes(), nowTime.getUTCSeconds(), nowTime.getUTCMilliseconds()).toISOString();
+
             //no report created, create one
             var record = '{"RegNo": "' + $scope.regno + '",';
+            record += ' "PortNo": "' + $scope.portnoId + '",';
             record += ' "AircraftId": "' + $scope.$parent.global_aircraftId + '",';
             record += ' "AircraftTypeId": "' + $scope.$parent.global_aircraftTypeId + '",';
             record += '"SurveyorId": "' + $scope.$parent.global_surveyorId + '",';
@@ -421,7 +427,7 @@ angular.module('airInspectionApp')
             record += '"Action":"'+ $scope.checkRadioText('#radio_action') + '",';
             record += '"Comment":"'+$scope.myComment+'"';
             record += '}],';
-            record += '"CreatedDate":"'+new Date().toISOString()+'",';
+            record += '"CreatedDate":"'+utcTime+'",';
             record += '"SubmittedBy":"",';
             record += '"Status":"A"}';
 
