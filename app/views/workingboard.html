@@ -65,7 +65,7 @@
                             </div>
                             <div class="group">
                                 <label><i class="fa fa-quote-left" ></i> Description</label>
-                                <select ng-model="myDescription" id="ddl_description" class="nya-selectpicker-out"  style="width: 280px;" ng-options="item.ItemDescription for item in items | baseOnItemTypeID  track by item.ItemDescription">
+                                <select ng-model="myDescription" id="ddl_description" class="nya-selectpicker-out" ng-change="setAMD(myDescription.AWD)"  style="width: 280px;" ng-options="item.ItemDescription for item in items | baseOnItemTypeID  track by item.ItemDescription">
                                     <option value="">-- Please select --</option>
                                 </select>
                             </div>
@@ -96,13 +96,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="float">
+                            <div class="float" ng-show="airworthy==='Yes'">
                                 <div class="group">
                                 <label><i class="fa  fa-exclamation-triangle" ></i> Airworthiness Defect</label>
-                                <div class="btn-group radio-group" id="radio_airworthy" ng-model="myAirworthy">
-                                    <label><input type="radio" name="airworthy" value="Yes"><span>Yes</span></label>
-                                    <label><input type="radio" name="airworthy" id="defaultAirworth" value="No" checked><span>No</span></label>
-                                </div>
+                                <input class="formstyle" placeholder="please enter Maint Log No. here" ng-model="MaintLogNo"  ng-init="MaintLogNo=''" />
+                                <!--<div class="btn-group radio-group" id="radio_airworthy" ng-model="myAirworthy">-->
+                                    <!--<label><input type="radio" name="airworthy" value="Yes"><span>Yes</span></label>-->
+                                    <!--<label><input type="radio" name="airworthy" id="defaultAirworth" value="No" checked><span>No</span></label>-->
+                                <!--</div>-->
                                 </div>
                             </div>
                         </div>

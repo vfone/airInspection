@@ -233,7 +233,6 @@ angular.module('airInspectionApp')
         $scope.myComment = '';
         $("#radio_condition input:checked").attr('checked', false);
         $("#radio_action input:checked").attr('checked', false);
-        $("#radio_airworthy input:checked").attr('checked', false);
 
         $scope.categoryID = cateID;
         $scope.categoryName = cateNme;
@@ -246,11 +245,21 @@ angular.module('airInspectionApp')
                 return false;
             }
         });
-    }
+    };
     $scope.populateItemDescription = function(itemTypeID){
         $scope.ItemTypeId = itemTypeID;
+    };
+    $scope.airworthy = 'No';
+    $scope.MaintLogNo = '';
+    $scope.setAMD = function(isAMD){
+      if(isAMD==='Y'){
+        $scope.airworthy = 'Yes';
+      }
+      else{
+        $scope.airworthy = 'No';
+      }
+      $scope.MaintLogNo = '';
     }
-
     function getTodayDate(){
         var today = new Date();
         var dd = today.getDate();
@@ -369,17 +378,17 @@ angular.module('airInspectionApp')
         $scope.error_message = "Please select Action!";
         $('#errorModal').modal();
     }
-    else if($scope.checkRadioText("#radio_airworthy") == null || $scope.checkRadioText("#radio_airworthy") == undefined || $scope.checkRadioText("#radio_airworthy") == ""){
+    else if($scope.airworthy == 'Yes' && $scope.MaintLogNo == ""){
         flag = false;
-        $scope.error_message = "Please select Airworthiness!";
+        $scope.error_message = "Please provide Maint Log No.!";
         $('#errorModal').modal();
     }
     //insert record to record panel
     if(flag){
         var li_len = $(".record-panel ul li").length;
-        var html = "<li class='"+$scope.checkRadioText("#radio_airworthy")+"Airworthy' id='rec-"+li_len+"'>";
+        var html = "<li class='"+$scope.airworthy+"Airworthy' id='rec-"+li_len+"'>";
          html += "<span class='square'>"+ $scope.categoryName.substring(0, 2).toUpperCase() +"</span><span class='localtion'>"+$scope.myLocation.Code+"</span><span class='itemdesc'>"+$scope.myDescription.ItemDescription+"</span>";
-         html += "<span class='condition "+$scope.checkRadioText("#radio_condition")+"'>"+$scope.checkRadioText("#radio_condition")+"</span><span class='action "+$scope.checkRadioText("#radio_action")+"'>"+$scope.checkRadioText("#radio_action")+"</span><span class='"+$scope.checkRadioText("#radio_airworthy")+"Airworthy'>"+ $scope.checkRadioText("#radio_airworthy").substring(0, 1).toUpperCase() +"</span>";
+         html += "<span class='condition "+$scope.checkRadioText("#radio_condition")+"'>"+$scope.checkRadioText("#radio_condition")+"</span><span class='action "+$scope.checkRadioText("#radio_action")+"'>"+$scope.checkRadioText("#radio_action")+"</span><span class='"+$scope.airworthy+"Airworthy'>"+ $scope.airworthy.substring(0, 1).toUpperCase() +"</span>";
          html += "<span class='close openDeleteModal' data-toggle='modal' data-target='#deleteModal' data-id='rec-"+li_len+"'><i class='fa fa-times-circle'></i></span>";
          html += "<span class='comment'><strong>Comment: </strong>"+$scope.myComment+"</span>";
          html += "</li>";
@@ -422,7 +431,8 @@ angular.module('airInspectionApp')
             record += '"ItemDescription":"'+ $scope.myDescription.ItemDescription + '",';
             record += '"ConditionID":"'+$scope.checkRadioValue('#radio_condition')+'",';
             record += '"Condition":"'+ $scope.checkRadioText('#radio_condition') +'",';
-            record += '"AirworthinessDefect":"'+$scope.checkRadioText('#radio_airworthy')+'",';
+            record += '"AirworthinessDefect":"'+$scope.airworthy+'",';
+            record += '"MaintenanceLogNo":"'+$scope.MaintLogNo+'",';
             record += '"ActionID":"'+$scope.checkRadioValue('#radio_action')+'",';
             record += '"Action":"'+ $scope.checkRadioText('#radio_action') + '",';
             record += '"Comment":"'+$scope.myComment+'"';
@@ -449,13 +459,13 @@ angular.module('airInspectionApp')
             record += '"ItemDescription":"'+ $scope.myDescription.ItemDescription + '",';
             record += '"ConditionID":"'+$scope.checkRadioValue('#radio_condition')+'",';
             record += '"Condition":"'+ $scope.checkRadioText('#radio_condition') +'",';
-            record += '"AirworthinessDefect":"'+$scope.checkRadioText('#radio_airworthy')+'",';
+            record += '"AirworthinessDefect":"'+$scope.airworthy+'",';
+            record += '"MaintenanceLogNo":"'+$scope.MaintLogNo+'",';
             record += '"ActionID":"'+$scope.checkRadioValue('#radio_action')+'",';
             record += '"Action":"'+ $scope.checkRadioText('#radio_action') + '",';
             record += '"Comment":"'+$scope.myComment+'"';
             record += '}';
 
-            //var record ='{"CategoryName":"' + $scope.categoryName + '", "ZoneName":"", "ZoneID":"999999", "SeatNo":"' + seatL+''+seatN + '", "Code":"'+ $scope.myLocation.Code + '", "LocationId":"'+ $scope.myLocation.LocationId + '", "ItemType":"'+ $scope.myItem.ItemTypeDescription + '","ItemTypeId":"'+ $scope.myItem.ItemTypeId + '", "ItemDescription":"'+ $scope.myDescription.ItemDescription + '", "ItemId":"'+ $scope.myDescription.ItemId + '", "Comment":"'+ $scope.myComment + '", "Condition":"'+ $scope.checkRadioText('#radio_condition') +  '","ConditionId":"'+ $scope.checkRadioValue('#radio_condition') +  '", "Action":"'+ $scope.checkRadioText('#radio_action') + '","ActionId":"'+ $scope.checkRadioValue('#radio_action') +  '", "AirworthinessDefect":"'+ $scope.checkRadioText('#radio_airworthy') +'"}';
 
             feed['Records'].push(JSON.parse(record));
             setLocalStorage(this.$parent.global_ReportID, JSON.stringify(feed));
