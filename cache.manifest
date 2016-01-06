@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 2015-10-10:v3
+# 2015-12-30:v5
 
 # Explicitly cached entries
 *
@@ -9,28 +9,33 @@ views/plan.html
 views/workingboard.html
 views/summaryboard.html
 scripts/
-scripts/vendor.53b9975e.js
+scripts/*
+scripts/vendor.78b34825.js
 scripts/oldieshim.d41d8cd9.js
-scripts/scripts.dfe08437.js
+scripts/scripts.1b75e99c.js
 styles/
+styles/*
 styles/vendor.bd233937.css
 styles/main.ed7ca863.css
 images/
+images/*
 images/favicon.518f7b60.png
-images/logo57x57.02719373.png
+images/logo57x57.0eb87cd3.png
 images/logo72x72.6e1bd639.png
-images/logo114x114.5c2a943c.png
-images/startup.00020c7e.png
+images/logo114x114.59e2a77e.png
+images/startup.343096b8.png
 images/startup@2x.e62801ed.png
+images/startup@2x.7d1f3c7f.png
+images/icons.fc914254.png
 images/bg/chart.9fe2bb9f.png
-images/bg/icons.fc914254.png
-images/bg/sprite.81a87d76.png
-images/bg/welcomebg.2c304948.jpg
-images/airplan/airplan737 700.6ff1a3a4.png
-images/airplan/airplan737 800.e06e911e.png
-images/airplan/airplanA330.13bbc9bd.png
-images/airplan/airplanembraer 170.ba57b94d.png
+images/bg/welcomebg.28b1eb1f.jpg
+images/airplan/airplan737 700.95e40844.png
+images/airplan/airplan737 800.dba104f3.png
+images/airplan/airplanA330.e0968945.png
+images/airplan/airplanembraer 170.d8a80bc0.png
 images/airplan/airplanembraer 190.bdd4def3.png
+fonts/
+fonts/*
 fonts/banglamn-webfont.eot
 fonts/banglamn-webfont.svg
 fonts/banglamn-webfont.ttf

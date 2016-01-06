@@ -26,7 +26,7 @@ angular.module('airInspectionApp')
        $(".login_box .input .optionDropdown").slideUp();
     }).keyup(function(){
 
-        if($(this).val().length >= 2)
+        if($(this).val().length >= 1)
         {
             $(this).parent('.input').find(".optionDropdown").slideDown();
         }
@@ -47,7 +47,6 @@ angular.module('airInspectionApp')
     $scope.assignToPort = function(el, val, val2){
       $('#'+el).parents('.input').find('input').val(val);
       $('#'+el).parents('.input').css("border", "none");
-
       //assign global aircraftTypeId
       $scope.$parent.global_portId = val2;
 
@@ -174,4 +173,3 @@ angular.module('airInspectionApp')
         };
 
   });
-

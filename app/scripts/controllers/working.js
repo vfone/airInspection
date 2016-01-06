@@ -96,7 +96,6 @@ angular.module('airInspectionApp')
             }];
         }
     }
-
     //assign scope
     $scope.locations = JSON.parse(getLocalStorage('Locations'));
     $scope.zones = JSON.parse(getLocalStorage('Zones'));
@@ -341,6 +340,11 @@ angular.module('airInspectionApp')
     $scope.saveRecord = function(){
     var flag = true;
     //validation
+    if($scope.airworthy == 'Yes'){
+      $('#radio_condition input').first().prop('checked', true);
+      $('#radio_action input').first().prop('checked', true);
+    }
+
     if($scope.categoryName == "")
     {
         flag = false;
@@ -408,8 +412,8 @@ angular.module('airInspectionApp')
       //console.log(getLocalStorage(this.$parent.global_ReportID));
 
       if(getLocalStorage(this.$parent.global_ReportID) == null){
-            var nowTime = new Date();
-            var utcTime = new Date(nowTime.getUTCFullYear(), nowTime.getUTCMonth(), nowTime.getDate(), +nowTime.getUTCHours(), nowTime.getUTCMinutes(), nowTime.getUTCSeconds(), nowTime.getUTCMilliseconds()).toISOString();
+            //var nowTime = new Date();
+            //var utcTime = new Date(nowTime.getUTCFullYear(), nowTime.getUTCMonth(), nowTime.getDate(), +nowTime.getUTCHours(), nowTime.getUTCMinutes(), nowTime.getUTCSeconds(), nowTime.getUTCMilliseconds()).toISOString();
 
             //no report created, create one
             var record = '{"RegNo": "' + $scope.regno + '",';
@@ -437,7 +441,7 @@ angular.module('airInspectionApp')
             record += '"Action":"'+ $scope.checkRadioText('#radio_action') + '",';
             record += '"Comment":"'+$scope.myComment+'"';
             record += '}],';
-            record += '"CreatedDate":"'+utcTime+'",';
+            record += '"CreatedDate":"",';
             record += '"SubmittedBy":"",';
             record += '"Status":"A"}';
 
@@ -483,6 +487,8 @@ angular.module('airInspectionApp')
         $scope.mySeatLetter= "";
         $scope.mySeatNumber = "";
         $scope.myComment = "";
+        $scope.airworthy = "";
+        $scope.MaintLogNo = "";
     }
 };
 
@@ -532,6 +538,10 @@ $scope.doneReport = function(){
         $('#errorModal').modal();
     }
     else{
+        var feed = JSON.parse(getLocalStorage(this.$parent.global_ReportID));
+        feed['CreatedDate'] = (new Date()).toISOString();
+        setLocalStorage(this.$parent.global_ReportID, JSON.stringify(feed));
+
         $scope.redirectTO("#/summary/from/work/rptid/"+this.$parent.global_ReportID);
     }
 }
@@ -541,7 +551,7 @@ $scope.extModal = function(){
   for(var i = 0; i < airtype.length; i++){
     if(airtype[i].AircraftTypeId == $scope.$parent.global_aircraftTypeId){
       $scope.AircraftModel = airtype[i].AircraftTypeDescription;
-      //alert($scope.AircraftModel);
+
       $('#extModal').modal();
     }
   }

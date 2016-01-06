@@ -38,7 +38,7 @@
             <div class="input">
               <input id="txt_portno" placeholder="PortNo" ng-model="portNo"/> <i class="fa fa-map-marker"></i>
               <ul id="txt_portno_list" class="optionDropdown">
-                <li ng-repeat="portno in portnos | filter: portNo" id={{'portno-'+$index}} ng-click="assignToPort('portno-'+$index,portno.Port, portno.PortId);">{{portno.Port}}</li>
+                <li ng-repeat="portno in portnos | filter: portNo" id={{'portno-'+portno.PortNo}} ng-click="assignToPort('portno-'+portno.PortNo, portno.Port, portno.PortNo);">{{portno.Port}}</li>
               </ul>
             </div>
             <a class="button" id="btn_login" ng-click="goToWorking();">
